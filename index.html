@@ -14,6 +14,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link rel="stylesheet" href="style.css">
+    
+    <!-- This script MUST be in the head to prevent the "flash of white" on dark mode -->
+    <script>
+        (function() {
+            try {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                }
+            } catch (e) { console.error("Could not apply dark mode theme.", e); }
+        })();
+    </script>
 </head>
 <body>
 
@@ -30,6 +42,12 @@
                     <li><a href="#testimonials" class="nav-link">Clients</a></li>
                     <li><a href="https://help.tallysolutions.com/" target="_blank" rel="noopener noreferrer" class="nav-link">Help</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <button id="theme-toggle" title="Toggle dark mode">
+                            <i class="fa-solid fa-moon icon-moon"></i>
+                            <i class="fa-solid fa-sun icon-sun"></i>
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
