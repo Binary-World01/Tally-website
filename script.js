@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Part 1: Modal Interactivity with Dynamic Fields ---
+    // --- Part 1: Dark Mode Toggle ---
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            const currentTheme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+        });
+    }
+
+    // --- Part 2: Modal Interactivity with Dynamic Fields ---
     const paymentModal = document.getElementById('payment-modal');
     if (paymentModal) {
         const plansSection = document.getElementById('plans');
@@ -88,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('click', (event) => { if (event.target == paymentModal) closeModal(); });
     }
 
-    // --- Part 2: Dynamic Plan Duration Toggles ---
+    // --- Part 3: Dynamic Plan Duration Toggles ---
     const durationGrids = document.querySelectorAll('.duration-grid');
     durationGrids.forEach(grid => {
         grid.addEventListener('click', (e) => {
@@ -131,18 +141,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Part 3: Fade-In Animation on Scroll ---
+    // --- Part 4: Fade-In Animation on Scroll ---
     const fadeElems = document.querySelectorAll('.fade-in');
     const fadeInObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
     fadeElems.forEach(el => fadeInObserver.observe(el));
 
-    // --- Part 4: Active Navigation Link on Scroll ---
+    // --- Part 5: Active Navigation Link on Scroll ---
     const sections = document.querySelectorAll('main section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     const navObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const currentId = entry.target.id; navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`); }); } }); }, { rootMargin: '-40% 0px -60% 0px' });
     sections.forEach(section => navObserver.observe(section));
 
-    // --- Part 5: Chatbot Logic ---
+    // --- Part 6: Chatbot Logic ---
     const chatbot = document.querySelector('.chatbot');
     const chatbotToggler = document.querySelector('.chatbot-toggler');
     if(chatbot && chatbotToggler) {
