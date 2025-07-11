@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SECURITY: Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'https://api.web3forms.com'; form-action 'https://api.web3forms.com'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
     <title>Tirupati Tally Solutions | Premium Tally Partner in Pune</title>
 
+    <!-- SECURITY: Subresource Integrity (SRI) Hashes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,6 +28,7 @@
                     <li><a href="#download" class="nav-link">Download</a></li>
                     <li><a href="#plans" class="nav-link">Plans</a></li>
                     <li><a href="#testimonials" class="nav-link">Clients</a></li>
+                    <li><a href="https://help.tallysolutions.com/" target="_blank" rel="noopener noreferrer" class="nav-link">Help</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -89,51 +93,92 @@
 
         <section id="plans">
             <div class="container">
-                <h2>Our Products & Pricing</h2>
-                <p class="section-subtitle">Official pricing for perpetual licenses and renewals. All prices are exclusive of GST.</p>
+                <h2>Find Your Perfect Plan</h2>
                 <div class="plans-grid">
                     
                     <div class="plan-card fade-in">
-                        <h3>TallyPrime Silver</h3>
-                        <div class="plan-desc">Perpetual License for a Single User.</div>
-                        <div class="price-container"><div class="price">₹ 26,550</div></div>
-                        <button class="purchase-btn" data-plan="TallyPrime Silver" data-amount="26,550" data-qr="assets/qr-silver.png">Buy Now</button>
+                        <h3 data-base-plan-name="TallyPrime Silver">TallyPrime Silver</h3>
+                        <div class="duration-grid">
+                            <button class="duration-btn" data-price="₹ 750" data-amount="750" data-plan-suffix=" (1 Month Rental)" data-features="Valid for 1 Month|Full Product Features|Includes TSS Subscription">1 Month</button>
+                            <button class="duration-btn" data-price="₹ 2,250" data-amount="2250" data-plan-suffix=" (3 Month Rental)" data-features="Valid for 3 Months|Full Product Features|Includes TSS Subscription">3 Months</button>
+                            <button class="duration-btn" data-price="₹ 9,000" data-amount="9000" data-plan-suffix=" (12 Month Rental)" data-features="Valid for 12 Months|Full Product Features|Includes TSS Subscription">12 Months</button>
+                            <button class="duration-btn active" data-price="₹ 22,500" data-amount="22500" data-plan-suffix=" (Lifetime)" data-features="Perpetual License|1 Year Free TSS Subscription|Unlimited Company Data">Lifetime</button>
+                        </div>
+                        <div class="price-container"><div class="price">₹ 22,500</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">What you get:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>Perpetual License</li>
+                            <li><i class="fa-solid fa-check"></i>1 Year Free TSS Subscription</li>
+                            <li><i class="fa-solid fa-check"></i>Unlimited Company Data</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TallyPrime Silver (Lifetime)" data-amount="22500" data-qr="assets/qr-silver.png" data-fields="none">Buy Now</button>
                     </div>
 
                     <div class="plan-card featured fade-in">
                         <span class="featured-badge">Most Popular</span>
-                        <h3>TallyPrime Gold</h3>
-                        <div class="plan-desc">Perpetual License for Multiple Users.</div>
-                        <div class="price-container"><div class="price">₹ 79,650</div></div>
-                        <button class="purchase-btn" data-plan="TallyPrime Gold" data-amount="79,650" data-qr="assets/qr-gold.png">Buy Now</button>
+                        <h3 data-base-plan-name="TallyPrime Gold">TallyPrime Gold</h3>
+                        <div class="duration-grid">
+                            <button class="duration-btn" data-price="₹ 2,250" data-amount="2250" data-plan-suffix=" (1 Month Rental)" data-features="Valid for 1 Month|For Multiple Users on LAN|Includes TSS Subscription">1 Month</button>
+                            <button class="duration-btn" data-price="₹ 6,750" data-amount="6750" data-plan-suffix=" (3 Month Rental)" data-features="Valid for 3 Months|For Multiple Users on LAN|Includes TSS Subscription">3 Months</button>
+                            <button class="duration-btn" data-price="₹ 27,000" data-amount="27000" data-plan-suffix=" (12 Month Rental)" data-features="Valid for 12 Months|For Multiple Users on LAN|Includes TSS Subscription">12 Months</button>
+                            <button class="duration-btn active" data-price="₹ 67,500" data-amount="67500" data-plan-suffix=" (Lifetime)" data-features="Perpetual License|For Multiple Users on LAN|1 Year Free TSS Subscription">Lifetime</button>
+                        </div>
+                        <div class="price-container"><div class="price">₹ 67,500</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">What you get:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>Perpetual License</li>
+                            <li><i class="fa-solid fa-check"></i>For Multiple Users on LAN</li>
+                            <li><i class="fa-solid fa-check"></i>1 Year Free TSS Subscription</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TallyPrime Gold (Lifetime)" data-amount="67500" data-qr="assets/qr-gold.png" data-fields="none">Buy Now</button>
                     </div>
-
+                    
                     <div class="plan-card fade-in">
                         <h3>TallyPrime Server</h3>
-                        <div class="plan-desc">High-performance for many concurrent users.</div>
-                        <div class="price-container"><div class="price">₹ 3,18,600</div></div>
-                        <button class="purchase-btn" data-plan="TallyPrime Server" data-amount="3,18,600" data-qr="assets/qr-server.png">Buy Now</button>
+                        <div class="price-container"><div class="price">₹ 2,70,000</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">For enterprises:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>High-performance Data Server</li>
+                            <li><i class="fa-solid fa-check"></i>Supports Many Concurrent Users</li>
+                            <li><i class="fa-solid fa-check"></i>Enhanced Security & Control</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TallyPrime Server" data-amount="270000" data-qr="assets/qr-server.png" data-fields="none">Buy Now</button>
                     </div>
 
                     <div class="plan-card fade-in">
                         <h3>TSS Renewal - Silver</h3>
-                        <div class="plan-desc">Annual Software Services for TallyPrime Silver.</div>
-                        <div class="price-container"><div class="price">₹ 5,310</div></div>
-                        <button class="purchase-btn" data-plan="TSS Renewal - Silver" data-amount="5,310" data-qr="assets/qr-tss-silver.png">Renew Now</button>
+                        <div class="price-container"><div class="price">₹ 4,500</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">Annual Subscription Includes:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>Latest Product Updates</li>
+                            <li><i class="fa-solid fa-check"></i>Secure Remote Access</li>
+                            <li><i class="fa-solid fa-check"></i>Statutory Compliance Updates</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TSS Renewal - Silver" data-amount="4500" data-qr="assets/qr-tss-silver.png" data-fields="gstin">Renew Now</button>
                     </div>
 
                     <div class="plan-card fade-in">
                         <h3>TSS Renewal - Gold</h3>
-                        <div class="plan-desc">Annual Software Services for TallyPrime Gold.</div>
-                        <div class="price-container"><div class="price">₹ 15,930</div></div>
-                        <button class="purchase-btn" data-plan="TSS Renewal - Gold" data-amount="15,930" data-qr="assets/qr-tss-gold.png">Renew Now</button>
+                        <div class="price-container"><div class="price">₹ 13,500</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">Annual Subscription Includes:</h4>
+                        <ul class="feature-list">
+                             <li><i class="fa-solid fa-check"></i>Latest Product Updates</li>
+                            <li><i class="fa-solid fa-check"></i>Secure Remote Access</li>
+                            <li><i class="fa-solid fa-check"></i>Statutory Compliance Updates</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TSS Renewal - Gold" data-amount="13500" data-qr="assets/qr-tss-gold.png" data-fields="gstin">Renew Now</button>
                     </div>
                     
                     <div class="plan-card fade-in">
-                        <h3>Shoper 9</h3>
-                        <div class="plan-desc">Retail business management software.</div>
-                        <div class="price-container"><div class="price">Contact Us</div></div>
-                        <button class="purchase-btn" data-plan="Shoper 9" data-amount="Contact" data-qr="assets/qr-shoper.png">Inquire Now</button>
+                        <h3>TSS - Auditor</h3>
+                        <div class="price-container"><div class="price">₹ 6,750</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">Annual Subscription Includes:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>Special Tools for Auditors</li>
+                            <li><i class="fa-solid fa-check"></i>Statutory Audit Features</li>
+                            <li><i class="fa-solid fa-check"></i>All Regular TSS Benefits</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TSS - Auditor" data-amount="6750" data-qr="assets/qr-tss-auditor.png" data-fields="auditor">Buy Now</button>
                     </div>
 
                 </div>
@@ -198,7 +243,7 @@
                         <h3>Step 1: Scan & Pay</h3>
                         <img id="qr-code-image" src="" alt="Scan to Pay"><p><strong>Amount:</strong> ₹<span id="qr-amount"></span></p>
                         <p><strong>UPI ID:</strong> <span class="upi-id">your-upi-id@okhdfcbank</span></p>
-                        <p class="instruction">After paying, enter the 12-digit UPI Transaction ID.</p>
+                        <div id="modal-features"></div>
                     </div>
                     <div class="modal-form-section">
                         <h3>Step 2: Submit Your Details</h3>
@@ -206,12 +251,25 @@
                             <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
                             <input type="hidden" id="form-plan-name" name="plan">
                             <input type="hidden" id="form-subject" name="subject" value="New Tally Order from Website - Pune">
+                            
                             <label>Full Name *</label><input type="text" name="fullName" required>
                             <label>Email Address *</label><input type="email" name="email" required>
                             <label>10-Digit Mobile *</label><input type="tel" name="mobile" required pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number." inputmode="numeric">
                             <label>Company Name (Optional)</label><input type="text" name="companyName">
-                            <label>12-Digit UPI ID *</label><input type="text" name="upi_id" required pattern="[0-9]{12}" title="Please enter the 12-digit UPI Transaction ID." inputmode="numeric" placeholder="Enter ID after payment">
+                            
+                            <div class="dynamic-field-container" id="gstin-container">
+                                <label for="gstin_number">GSTIN Number *</label>
+                                <input type="text" name="gstin_number" id="gstin_number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}" title="Please enter a valid GSTIN Number.">
+                            </div>
+                            <div class="dynamic-field-container" id="auditor-container">
+                                <label for="mrn_number">MRN Number *</label><input type="text" name="mrn_number" id="mrn_number">
+                                <label for="enrollment_number">Enrollment Number *</label><input type="text" name="enrollment_number" id="enrollment_number">
+                                <label for="dob">Date of Birth *</label><input type="date" name="dob" id="dob">
+                            </div>
+
+                            <label>12-Digit UPI Transaction ID *</label><input type="text" name="upi_id" required pattern="[0-9]{12}" title="Please enter the 12-digit UPI Transaction ID." inputmode="numeric" placeholder="Enter ID after payment">
                             <label>Message / Notes (Optional)</label><textarea name="message" rows="3" placeholder="Any special instructions?"></textarea>
+
                             <button type="submit" class="cta-button">Submit & Verify Payment</button>
                         </form>
                     </div>
