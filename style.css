@@ -13,9 +13,9 @@
   --c-border: #e0e0e0;
   /* Dark Theme */
   --c-bg-dark: #0d1117;
+  --c-bg-darker: #010409;
   --c-bg-dark-light: #161b22;
   --c-bg-rgb-dark: 13, 17, 23;
-  --c-bg-darker: #010409;
   --c-text-heading-dark: #f0f6fc;
   --c-text-body-dark: #adbac7;
   --c-border-dark: #30363d;
@@ -27,6 +27,10 @@ html.dark-mode {
   --c-text-heading: var(--c-text-heading-dark);
   --c-text-body: var(--c-text-body-dark);
   --c-border: var(--c-border-dark);
+}
+html,
+body {
+  overflow-x: hidden;
 }
 html {
   scroll-behavior: smooth;
@@ -70,7 +74,6 @@ h4.features-title {
 }
 section {
   padding: 90px 0;
-  overflow-x: hidden;
 }
 .section-subtitle {
   font-size: 1.1rem;
@@ -103,6 +106,9 @@ header .container {
   object-fit: cover;
   border: 2px solid var(--c-border);
 }
+nav#nav-menu {
+  display: none;
+}
 nav ul {
   list-style: none;
   margin: 0;
@@ -133,7 +139,7 @@ nav ul li a.active {
 }
 .menu-button {
   background: none;
-  border: 1px solid transparent;
+  border: none;
   color: var(--c-text-body);
   width: 40px;
   height: 40px;
@@ -149,7 +155,7 @@ nav ul li a.active {
   background-color: var(--c-bg-light);
 }
 #menu-toggle {
-  display: none;
+  display: flex;
 }
 #menu-close {
   display: none;
@@ -177,12 +183,21 @@ html.dark-mode .icon-sun {
   pointer-events: auto;
 }
 
-/* Mobile & Tablet Navigation Styles */
+/* Desktop & Mobile Nav Styles */
+@media (min-width: 1101px) {
+  nav#nav-menu {
+    display: block;
+  }
+  #menu-toggle {
+    display: none;
+  }
+}
 @media (max-width: 1100px) {
   #menu-toggle {
     display: flex;
   }
   nav#nav-menu {
+    display: block;
     position: fixed;
     top: 0;
     right: 0;
@@ -230,9 +245,14 @@ html.dark-mode .icon-sun {
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 40px;
+}
+@media (min-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 .hero-text h1 {
   font-size: clamp(2.5rem, 5vw, 3.8rem);
@@ -317,9 +337,8 @@ html.dark-mode .icon-sun {
     transform: translateY(0px);
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   .hero-grid {
-    grid-template-columns: 1fr;
     text-align: center;
   }
   .hero-text p {
@@ -427,6 +446,9 @@ html.dark-mode .plan-card:hover {
   gap: 8px;
   margin-bottom: 15px;
 }
+.tss-duration {
+  grid-template-columns: 1fr 1fr;
+}
 .duration-btn {
   padding: 10px 5px;
   font-size: 0.9rem;
@@ -480,7 +502,7 @@ html.dark-mode .plan-card:hover {
   font-size: 0.9rem;
 }
 .plan-card.featured {
-  border: 2px solid var(--accent-gold);
+  border-color: var(--accent-gold);
   position: relative;
   overflow: hidden;
   transform: scale(1.05);
@@ -527,14 +549,16 @@ html.dark-mode .plan-card:hover {
 
 /* 6. Footer, Animations, Chatbot, Modal */
 footer {
-  background-color: var(--c-bg-darker);
-  color: var(--c-text-body-dark);
-  border-top: 1px solid var(--c-border-dark);
-  padding: 60px 0 20px;
-}
-html:not(.dark-mode) footer {
   background-color: var(--primary-blue);
+  color: #b3c5e8;
   border-top: 1px solid var(--primary-blue);
+  padding: 60px 0 20px;
+  transition: all 0.3s ease;
+}
+html.dark-mode footer {
+  background-color: var(--c-bg-darker);
+  border-top-color: var(--c-border-dark);
+  color: var(--c-text-body-dark);
 }
 .footer-content {
   display: flex;
@@ -563,12 +587,12 @@ html:not(.dark-mode) footer {
   margin-bottom: 10px;
 }
 .footer-links ul li a {
-  color: var(--c-text-body-dark);
+  color: #b3c5e8;
   text-decoration: none;
   transition: color 0.3s ease;
 }
-html:not(.dark-mode) .footer-links ul li a {
-  color: #b3c5e8;
+html.dark-mode .footer-links ul li a {
+  color: var(--c-text-body-dark);
 }
 .footer-links ul li a:hover {
   color: var(--accent-gold);
@@ -585,13 +609,13 @@ html:not(.dark-mode) .footer-links ul li a {
 }
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid #42526e;
+  border-top: 1px solid #3b5a9b;
   padding-top: 20px;
   margin-top: 20px;
   opacity: 0.7;
 }
-html:not(.dark-mode) .footer-bottom {
-  border-top-color: #3b5a9b;
+html.dark-mode .footer-bottom {
+  border-top-color: var(--c-border-dark);
 }
 @keyframes pulse {
   0% {
