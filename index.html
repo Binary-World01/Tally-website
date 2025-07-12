@@ -1,640 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- SECURITY: Content Security Policy -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'https://api.web3forms.com'; form-action 'https://api.web3forms.com'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'https://api.web3forms.com'; form-action 'https://api.web3forms.com'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
     <title>Tirupati Tally Solutions | Premium Tally Partner in Pune</title>
 
-    <!-- SECURITY: Subresource Integrity (SRI) Hashes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <link rel="stylesheet" href="style.css" />
-
-    <!-- This script MUST be in the head to prevent the "flash of white" on dark mode -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="style.css">
+    
     <script>
-      (function () {
-        try {
-          const theme = localStorage.getItem("theme");
-          if (theme === "dark") {
-            document.documentElement.classList.add("dark-mode");
-          }
-        } catch (e) {
-          console.error("Could not apply dark mode theme.", e);
-        }
-      })();
+        (function() {
+            try {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark') { document.documentElement.classList.add('dark-mode'); }
+            } catch (e) { console.error("Could not apply dark mode theme.", e); }
+        })();
     </script>
-  </head>
-  <body>
+</head>
+<body>
+
     <header>
-      <div class="container">
-        <div class="logo">
-          <img src="assets/logo.png" alt="Tirupati Tally Solutions Logo" />
+        <div class="container">
+            <div class="logo"><img src="assets/logo.png" alt="Tirupati Tally Solutions Logo"></div>
+            
+            <nav id="nav-menu">
+                <button id="menu-close" class="menu-button" aria-label="Close Menu">×</button>
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#why-us" class="nav-link">Why Us</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#download" class="nav-link">Download</a></li>
+                    <li><a href="#plans" class="nav-link">Plans</a></li>
+                    <li><a href="#testimonials" class="nav-link">Clients</a></li>
+                    <li><a href="https://help.tallysolutions.com/" target="_blank" rel="noopener noreferrer" class="nav-link">Help</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button id="theme-toggle" class="menu-button" title="Toggle dark mode">
+                    <i class="fa-solid fa-moon icon-moon"></i>
+                    <i class="fa-solid fa-sun icon-sun"></i>
+                </button>
+                <button id="menu-toggle" class="menu-button" aria-label="Open Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </div>
-
-        <nav id="nav-menu">
-          <button id="menu-close" class="menu-button" aria-label="Close Menu">
-            ×
-          </button>
-          <ul>
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#why-us" class="nav-link">Why Us</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#download" class="nav-link">Download</a></li>
-            <li><a href="#plans" class="nav-link">Plans</a></li>
-            <li><a href="#testimonials" class="nav-link">Clients</a></li>
-            <li>
-              <a
-                href="https://help.tallysolutions.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="nav-link"
-                >Help</a
-              >
-            </li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-          </ul>
-        </nav>
-
-        <div class="header-actions">
-          <button
-            id="theme-toggle"
-            class="menu-button"
-            title="Toggle dark mode"
-          >
-            <i class="fa-solid fa-moon icon-moon"></i>
-            <i class="fa-solid fa-sun icon-sun"></i>
-          </button>
-          <button id="menu-toggle" class="menu-button" aria-label="Open Menu">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-        </div>
-      </div>
     </header>
 
     <div id="overlay"></div>
 
     <main>
-      <section id="home" class="hero">
-        <div class="container hero-grid">
-          <div class="hero-text fade-in">
-            <h1>Pune's Premier Tally Service Provider</h1>
-            <p>
-              From Tirupati Tally Solutions, we provide elite implementation,
-              genuine software sales, and expert local support to elevate your
-              business.
-            </p>
-            <a href="#plans" class="cta-button">View Products & Pricing</a>
-          </div>
-          <div class="hero-visual">
-            <div class="visual-card main-card">
-              <h4>Revenue Overview</h4>
-              <i class="fa-solid fa-chart-line chart-icon"></i
-              ><span class="main-figure">₹ 1,25,48,000</span>
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text fade-in">
+                    <h1>Pune's Premier Tally Service Provider</h1>
+                    <p>From Tirupati Tally Solutions, we provide elite implementation, genuine software sales, and expert local support to elevate your business.</p>
+                    <a href="#plans" class="cta-button">View Products & Pricing</a>
+                </div>
+                <div class="hero-visual">
+                    <div class="visual-card main-card">
+                        <h4>Revenue Overview</h4><i class="fa-solid fa-chart-line chart-icon"></i><span class="main-figure">₹ 1,25,48,000</span>
+                    </div>
+                    <div class="visual-card float-card-1"><i class="fa-solid fa-file-invoice-dollar"></i><span>Invoices Sent</span></div>
+                    <div class="visual-card float-card-2"><i class="fa-solid fa-shield-halved"></i><span>GST Verified</span></div>
+                </div>
             </div>
-            <div class="visual-card float-card-1">
-              <i class="fa-solid fa-file-invoice-dollar"></i
-              ><span>Invoices Sent</span>
-            </div>
-            <div class="visual-card float-card-2">
-              <i class="fa-solid fa-shield-halved"></i><span>GST Verified</span>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="why-us">
-        <div class="container">
-          <div class="feature-grid">
-            <div class="feature-item fade-in">
-              <i class="fa-solid fa-medal"></i>
-              <h3>Authorised Partner</h3>
-              <p>
-                Direct access to genuine Tally products, licenses, and official
-                updates.
-              </p>
+        <section id="why-us">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-item fade-in"><i class="fa-solid fa-medal"></i><h3>Authorised Partner</h3><p>Direct access to genuine Tally products, licenses, and official updates.</p></div>
+                    <div class="feature-item fade-in"><i class="fa-solid fa-map-location-dot"></i><h3>Local Pune Support</h3><p>We provide fast, on-site, and remote assistance for businesses in Pune.</p></div>
+                    <div class="feature-item fade-in"><i class="fa-solid fa-user-tie"></i><h3>Expert Certified Team</h3><p>Our experienced professionals ensure seamless service and training.</p></div>
+                </div>
             </div>
-            <div class="feature-item fade-in">
-              <i class="fa-solid fa-map-location-dot"></i>
-              <h3>Local Pune Support</h3>
-              <p>
-                We provide fast, on-site, and remote assistance for businesses
-                in Pune.
-              </p>
-            </div>
-            <div class="feature-item fade-in">
-              <i class="fa-solid fa-user-tie"></i>
-              <h3>Expert Certified Team</h3>
-              <p>
-                Our experienced professionals ensure seamless service and
-                training.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="services">
-        <div class="container">
-          <h2>Our Comprehensive Services</h2>
-          <div class="service-grid">
-            <div class="service-item fade-in">
-              <i class="fa-solid fa-cash-register"></i>
-              <h3>Tally Prime Sales</h3>
-              <p>Get new Silver & Gold licenses from an official partner.</p>
+        <section id="services">
+            <div class="container">
+                <h2>Our Comprehensive Services</h2>
+                <div class="service-grid">
+                    <div class="service-item fade-in"><i class="fa-solid fa-cash-register"></i><h3>Tally Prime Sales</h3><p>Get new Silver & Gold licenses from an official partner.</p></div>
+                    <div class="service-item fade-in"><i class="fa-solid fa-laptop-code"></i><h3>Implementation</h3><p>We install and configure Tally for your specific business needs.</p></div>
+                    <div class="service-item fade-in"><i class="fa-solid fa-headset"></i><h3>Priority Support</h3><p>Expert on-site & remote assistance from our certified team.</p></div>
+                    <div class="service-item fade-in"><i class="fa-solid fa-users"></i><h3>Corporate Training</h3><p>Professional Tally training programs to upskill your staff.</p></div>
+                    <div class="service-item fade-in"><i class="fa-solid fa-sync"></i><h3>TSS Renewals</h3><p>Easily renew your Tally Software Services subscription with us.</p></div>
+                    <div class="service-item fade-in"><i class="fa-solid fa-drafting-compass"></i><h3>Customisation</h3><p>Tailoring Tally with custom reports and features.</p></div>
+                </div>
             </div>
-            <div class="service-item fade-in">
-              <i class="fa-solid fa-laptop-code"></i>
-              <h3>Implementation</h3>
-              <p>
-                We install and configure Tally for your specific business needs.
-              </p>
-            </div>
-            <div class="service-item fade-in">
-              <i class="fa-solid fa-headset"></i>
-              <h3>Priority Support</h3>
-              <p>Expert on-site & remote assistance from our certified team.</p>
-            </div>
-            <div class="service-item fade-in">
-              <i class="fa-solid fa-users"></i>
-              <h3>Corporate Training</h3>
-              <p>Professional Tally training programs to upskill your staff.</p>
-            </div>
-            <div class="service-item fade-in">
-              <i class="fa-solid fa-sync"></i>
-              <h3>TSS Renewals</h3>
-              <p>
-                Easily renew your Tally Software Services subscription with us.
-              </p>
-            </div>
-            <div class="service-item fade-in">
-              <i class="fa-solid fa-drafting-compass"></i>
-              <h3>Customisation</h3>
-              <p>Tailoring Tally with custom reports and features.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="download">
-        <div class="container fade-in">
-          <h2>Download Tally Prime</h2>
-          <p class="section-subtitle">
-            Click the button below to get the latest version directly from the
-            official Tally Solutions website.
-            <br />The software runs in a free educational mode until a license
-            is purchased and activated.
-          </p>
-          <a
-            href="https://tallysolutions.com/download/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="cta-button download-btn"
-          >
-            <i class="fa-solid fa-download"></i>
-            Proceed to Official Download
-          </a>
-        </div>
-      </section>
+        <section id="download">
+            <div class="container fade-in">
+                <h2>Download Tally Prime</h2>
+                <p class="section-subtitle">
+                    Click the button below to get the latest version directly from the official Tally Solutions website.
+                    <br>The software runs in a free educational mode until a license is purchased and activated.
+                </p>
+                <a href="https://tallysolutions.com/download/" target="_blank" rel="noopener noreferrer" class="cta-button download-btn">
+                    <i class="fa-solid fa-download"></i>
+                    Proceed to Official Download
+                </a>
+            </div>
+        </section>
 
-      <section id="plans">
-        <div class="container">
-          <h2>Find Your Perfect Plan</h2>
-          <div class="plans-grid">
-            <div class="plan-card fade-in">
-              <h3 data-base-plan-name="TallyPrime Silver">TallyPrime Silver</h3>
-              <div class="duration-grid">
-                <button
-                  class="duration-btn"
-                  data-price="₹ 750"
-                  data-amount="750"
-                  data-plan-suffix=" (1 Month Rental)"
-                  data-features="Valid for 1 Month|Full Product Features|Includes TSS Subscription"
-                >
-                  1 Month
-                </button>
-                <button
-                  class="duration-btn"
-                  data-price="₹ 2,250"
-                  data-amount="2250"
-                  data-plan-suffix=" (3 Month Rental)"
-                  data-features="Valid for 3 Months|Full Product Features|Includes TSS Subscription"
-                >
-                  3 Months
-                </button>
-                <button
-                  class="duration-btn"
-                  data-price="₹ 9,000"
-                  data-amount="9000"
-                  data-plan-suffix=" (12 Month Rental)"
-                  data-features="Valid for 12 Months|Full Product Features|Includes TSS Subscription"
-                >
-                  12 Months
-                </button>
-                <button
-                  class="duration-btn active"
-                  data-price="₹ 22,500"
-                  data-amount="22500"
-                  data-plan-suffix=" (Lifetime)"
-                  data-features="Perpetual License|1 Year Free TSS Subscription|Unlimited Company Data"
-                >
-                  Lifetime
-                </button>
-              </div>
-              <div class="price-container">
-                <div class="price">₹ 22,500</div>
-                <span class="price-tag">+18% GST</span>
-              </div>
-              <h4 class="features-title">What you get:</h4>
-              <ul class="feature-list">
-                <li><i class="fa-solid fa-check"></i>Perpetual License</li>
-                <li>
-                  <i class="fa-solid fa-check"></i>1 Year Free TSS Subscription
-                </li>
-                <li><i class="fa-solid fa-check"></i>Unlimited Company Data</li>
-              </ul>
-              <button
-                class="purchase-btn"
-                data-plan="TallyPrime Silver (Lifetime)"
-                data-amount="22500"
-                data-qr="assets/qr-silver.png"
-                data-fields="none"
-              >
-                Buy Now
-              </button>
-            </div>
+        <section id="plans">
+            <div class="container">
+                <h2>Find Your Perfect Plan</h2>
+                <div class="plans-grid">
+                    
+                    <div class="plan-card fade-in">
+                        <h3 data-base-plan-name="TallyPrime Silver">TallyPrime Silver</h3>
+                        <div class="duration-grid">
+                            <button class="duration-btn" data-price="₹ 750" data-amount="750" data-plan-suffix=" (1 Month Rental)" data-features="Valid for 1 Month|Full Product Features|Includes TSS Subscription">1 Month</button>
+                            <button class="duration-btn" data-price="₹ 2,250" data-amount="2250" data-plan-suffix=" (3 Month Rental)" data-features="Valid for 3 Months|Full Product Features|Includes TSS Subscription">3 Months</button>
+                            <button class="duration-btn" data-price="₹ 9,000" data-amount="9000" data-plan-suffix=" (12 Month Rental)" data-features="Valid for 12 Months|Full Product Features|Includes TSS Subscription">12 Months</button>
+                            <button class="duration-btn active" data-price="₹ 22,500" data-amount="22500" data-plan-suffix=" (Lifetime)" data-features="Perpetual License|1 Year Free TSS Subscription|Unlimited Company Data">Lifetime</button>
+                        </div>
+                        <div class="price-container"><div class="price">₹ 22,500</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">What you get:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>Perpetual License</li>
+                            <li><i class="fa-solid fa-check"></i>1 Year Free TSS Subscription</li>
+                            <li><i class="fa-solid fa-check"></i>Unlimited Company Data</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TallyPrime Silver (Lifetime)" data-amount="22500" data-qr="assets/qr-silver.png" data-fields="none">Buy Now</button>
+                    </div>
 
-            <div class="plan-card featured fade-in">
-              <span class="featured-badge">Most Popular</span>
-              <h3 data-base-plan-name="TallyPrime Gold">TallyPrime Gold</h3>
-              <div class="duration-grid">
-                <button
-                  class="duration-btn"
-                  data-price="₹ 2,250"
-                  data-amount="2250"
-                  data-plan-suffix=" (1 Month Rental)"
-                  data-features="Valid for 1 Month|For Multiple Users on LAN|Includes TSS Subscription"
-                >
-                  1 Month
-                </button>
-                <button
-                  class="duration-btn"
-                  data-price="₹ 6,750"
-                  data-amount="6750"
-                  data-plan-suffix=" (3 Month Rental)"
-                  data-features="Valid for 3 Months|For Multiple Users on LAN|Includes TSS Subscription"
-                >
-                  3 Months
-                </button>
-                <button
-                  class="duration-btn"
-                  data-price="₹ 27,000"
-                  data-amount="27000"
-                  data-plan-suffix=" (12 Month Rental)"
-                  data-features="Valid for 12 Months|For Multiple Users on LAN|Includes TSS Subscription"
-                >
-                  12 Months
-                </button>
-                <button
-                  class="duration-btn active"
-                  data-price="₹ 67,500"
-                  data-amount="67500"
-                  data-plan-suffix=" (Lifetime)"
-                  data-features="Perpetual License|For Multiple Users on LAN|1 Year Free TSS Subscription"
-                >
-                  Lifetime
-                </button>
-              </div>
-              <div class="price-container">
-                <div class="price">₹ 67,500</div>
-                <span class="price-tag">+18% GST</span>
-              </div>
-              <h4 class="features-title">What you get:</h4>
-              <ul class="feature-list">
-                <li><i class="fa-solid fa-check"></i>Perpetual License</li>
-                <li>
-                  <i class="fa-solid fa-check"></i>For Multiple Users on LAN
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i>1 Year Free TSS Subscription
-                </li>
-              </ul>
-              <button
-                class="purchase-btn"
-                data-plan="TallyPrime Gold (Lifetime)"
-                data-amount="67500"
-                data-qr="assets/qr-gold.png"
-                data-fields="none"
-              >
-                Buy Now
-              </button>
-            </div>
+                    <div class="plan-card featured fade-in">
+                        <span class="featured-badge">Most Popular</span>
+                        <h3 data-base-plan-name="TallyPrime Gold">TallyPrime Gold</h3>
+                        <div class="duration-grid">
+                            <button class="duration-btn" data-price="₹ 2,250" data-amount="2250" data-plan-suffix=" (1 Month Rental)" data-features="Valid for 1 Month|For Multiple Users on LAN|Includes TSS Subscription">1 Month</button>
+                            <button class="duration-btn" data-price="₹ 6,750" data-amount="6750" data-plan-suffix=" (3 Month Rental)" data-features="Valid for 3 Months|For Multiple Users on LAN|Includes TSS Subscription">3 Months</button>
+                            <button class="duration-btn" data-price="₹ 27,000" data-amount="27000" data-plan-suffix=" (12 Month Rental)" data-features="Valid for 12 Months|For Multiple Users on LAN|Includes TSS Subscription">12 Months</button>
+                            <button class="duration-btn active" data-price="₹ 67,500" data-amount="67500" data-plan-suffix=" (Lifetime)" data-features="Perpetual License|For Multiple Users on LAN|1 Year Free TSS Subscription">Lifetime</button>
+                        </div>
+                        <div class="price-container"><div class="price">₹ 67,500</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">What you get:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>Perpetual License</li>
+                            <li><i class="fa-solid fa-check"></i>For Multiple Users on LAN</li>
+                            <li><i class="fa-solid fa-check"></i>1 Year Free TSS Subscription</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TallyPrime Gold (Lifetime)" data-amount="67500" data-qr="assets/qr-gold.png" data-fields="none">Buy Now</button>
+                    </div>
+                    
+                    <div class="plan-card fade-in">
+                        <h3>TallyPrime Server</h3>
+                        <div class="price-container"><div class="price">₹ 2,70,000</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">For enterprises:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>High-performance Data Server</li>
+                            <li><i class="fa-solid fa-check"></i>Supports Many Concurrent Users</li>
+                            <li><i class="fa-solid fa-check"></i>Enhanced Security & Control</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TallyPrime Server" data-amount="270000" data-qr="assets/qr-server.png" data-fields="none">Buy Now</button>
+                    </div>
 
-            <div class="plan-card fade-in">
-              <h3>TallyPrime Server</h3>
-              <div class="price-container">
-                <div class="price">₹ 2,70,000</div>
-                <span class="price-tag">+18% GST</span>
-              </div>
-              <h4 class="features-title">For enterprises:</h4>
-              <ul class="feature-list">
-                <li>
-                  <i class="fa-solid fa-check"></i>High-performance Data Server
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i>Supports Many Concurrent
-                  Users
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i>Enhanced Security & Control
-                </li>
-              </ul>
-              <button
-                class="purchase-btn"
-                data-plan="TallyPrime Server"
-                data-amount="270000"
-                data-qr="assets/qr-server.png"
-                data-fields="none"
-              >
-                Buy Now
-              </button>
-            </div>
+                    <div class="plan-card fade-in">
+                        <h3>Silver to Gold Upgrade</h3>
+                        <div class="price-container"><div class="price">₹ 45,000</div><span class="price-tag">+18% GST</span></div>
+                         <h4 class="features-title">License Upgrade Includes:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>Upgrade your Silver License</li>
+                            <li><i class="fa-solid fa-check"></i>Unlock Multi-User Access (LAN)</li>
+                            <li><i class="fa-solid fa-check"></i>Seamless Data Migration</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="Silver to Gold Upgrade" data-amount="45000" data-qr="assets/qr-upgrade.png" data-fields="none">Upgrade Now</button>
+                    </div>
+                    
+                    <div class="plan-card fade-in">
+                        <h3 data-base-plan-name="TSS Renewal - Silver">TSS Renewal - Silver</h3>
+                        <div class="duration-grid tss-duration">
+                             <button class="duration-btn active" data-price="₹ 4,500" data-amount="4500" data-plan-suffix=" (1 Year)" data-features="Product Updates for 1 Year|Remote Access|Statutory Compliance">1 Year</button>
+                            <button class="duration-btn" data-price="₹ 8,550" data-amount="8550" data-plan-suffix=" (2 Year)" data-features="All Benefits for 2 Years|Includes 10% Discount|Peace of Mind">2 Years</button>
+                        </div>
+                        <div class="price-container"><div class="price">₹ 4,500</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">Annual Subscription Includes:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>Latest Product Updates</li>
+                            <li><i class="fa-solid fa-check"></i>Secure Remote Access</li>
+                            <li><i class="fa-solid fa-check"></i>Statutory Compliance Updates</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TSS Renewal - Silver (1 Year)" data-amount="4500" data-qr="assets/qr-tss-silver.png" data-fields="gstin">Renew Now</button>
+                    </div>
 
-            <div class="plan-card fade-in">
-              <h3>TSS Renewal - Silver</h3>
-              <div class="price-container">
-                <div class="price">₹ 4,500</div>
-                <span class="price-tag">+18% GST</span>
-              </div>
-              <h4 class="features-title">Annual Subscription Includes:</h4>
-              <ul class="feature-list">
-                <li><i class="fa-solid fa-check"></i>Latest Product Updates</li>
-                <li><i class="fa-solid fa-check"></i>Secure Remote Access</li>
-                <li>
-                  <i class="fa-solid fa-check"></i>Statutory Compliance Updates
-                </li>
-              </ul>
-              <button
-                class="purchase-btn"
-                data-plan="TSS Renewal - Silver"
-                data-amount="4500"
-                data-qr="assets/qr-tss-silver.png"
-                data-fields="gstin"
-              >
-                Renew Now
-              </button>
-            </div>
+                    <div class="plan-card fade-in">
+                        <h3 data-base-plan-name="TSS Renewal - Gold">TSS Renewal - Gold</h3>
+                         <div class="duration-grid tss-duration">
+                            <button class="duration-btn active" data-price="₹ 13,500" data-amount="13500" data-plan-suffix=" (1 Year)" data-features="Product Updates for 1 Year|Remote Access|Statutory Compliance">1 Year</button>
+                            <button class="duration-btn" data-price="₹ 25,650" data-amount="25650" data-plan-suffix=" (2 Year)" data-features="All Benefits for 2 Years|Includes 10% Discount|Peace of Mind">2 Years</button>
+                        </div>
+                        <div class="price-container"><div class="price">₹ 13,500</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">Annual Subscription Includes:</h4>
+                        <ul class="feature-list">
+                             <li><i class="fa-solid fa-check"></i>Latest Product Updates</li>
+                            <li><i class="fa-solid fa-check"></i>Secure Remote Access</li>
+                            <li><i class="fa-solid fa-check"></i>Statutory Compliance Updates</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TSS Renewal - Gold (1 Year)" data-amount="13500" data-qr="assets/qr-tss-gold.png" data-fields="gstin">Renew Now</button>
+                    </div>
+                    
+                    <div class="plan-card fade-in">
+                        <h3 data-base-plan-name="TSS - Auditor">TSS - Auditor</h3>
+                        <div class="duration-grid tss-duration">
+                             <button class="duration-btn active" data-price="₹ 6,750" data-amount="6750" data-plan-suffix=" (1 Year)" data-features="Tools for CAs|Audit Features|All TSS Benefits">1 Year</button>
+                            <button class="duration-btn" data-price="₹ 12,825" data-amount="12825" data-plan-suffix=" (2 Year)" data-features="All Benefits for 2 Years|Includes 10% Discount|Peace of Mind">2 Years</button>
+                        </div>
+                        <div class="price-container"><div class="price">₹ 6,750</div><span class="price-tag">+18% GST</span></div>
+                        <h4 class="features-title">Annual Subscription Includes:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i>Special Tools for Auditors</li>
+                            <li><i class="fa-solid fa-check"></i>Statutory Audit Features</li>
+                            <li><i class="fa-solid fa-check"></i>All Regular TSS Benefits</li>
+                        </ul>
+                        <button class="purchase-btn" data-plan="TSS - Auditor (1 Year)" data-amount="6750" data-qr="assets/qr-tss-auditor.png" data-fields="auditor">Buy Now</button>
+                    </div>
 
-            <div class="plan-card fade-in">
-              <h3>TSS Renewal - Gold</h3>
-              <div class="price-container">
-                <div class="price">₹ 13,500</div>
-                <span class="price-tag">+18% GST</span>
-              </div>
-              <h4 class="features-title">Annual Subscription Includes:</h4>
-              <ul class="feature-list">
-                <li><i class="fa-solid fa-check"></i>Latest Product Updates</li>
-                <li><i class="fa-solid fa-check"></i>Secure Remote Access</li>
-                <li>
-                  <i class="fa-solid fa-check"></i>Statutory Compliance Updates
-                </li>
-              </ul>
-              <button
-                class="purchase-btn"
-                data-plan="TSS Renewal - Gold"
-                data-amount="13500"
-                data-qr="assets/qr-tss-gold.png"
-                data-fields="gstin"
-              >
-                Renew Now
-              </button>
+                </div>
             </div>
+        </section>
 
-            <div class="plan-card fade-in">
-              <h3>TSS - Auditor</h3>
-              <div class="price-container">
-                <div class="price">₹ 6,750</div>
-                <span class="price-tag">+18% GST</span>
-              </div>
-              <h4 class="features-title">Annual Subscription Includes:</h4>
-              <ul class="feature-list">
-                <li>
-                  <i class="fa-solid fa-check"></i>Special Tools for Auditors
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i>Statutory Audit Features
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i>All Regular TSS Benefits
-                </li>
-              </ul>
-              <button
-                class="purchase-btn"
-                data-plan="TSS - Auditor"
-                data-amount="6750"
-                data-qr="assets/qr-tss-auditor.png"
-                data-fields="auditor"
-              >
-                Buy Now
-              </button>
+        <section id="testimonials">
+            <div class="container">
+                <h2>What Our Pune Clients Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card fade-in">
+                        <p class="quote">"The team at Tirupati Tally Solutions made our transition to Tally Prime incredibly smooth. Their local Pune support is a game-changer!"</p>
+                        <p class="client-name">- Aniket Sharma, Director, Sharma Industries</p>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <p class="quote">"Exceptional service and deep knowledge of the software. They customized a report for us that saved hours of work each week."</p>
+                        <p class="client-name">- Priya Deshpande, CFO, Pune Logistics Co.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="testimonials">
-        <div class="container">
-          <h2>What Our Pune Clients Say</h2>
-          <div class="testimonial-grid">
-            <div class="testimonial-card fade-in">
-              <p class="quote">
-                "The team at Tirupati Tally Solutions made our transition to
-                Tally Prime incredibly smooth. Their local Pune support is a
-                game-changer!"
-              </p>
-              <p class="client-name">
-                - Aniket Sharma, Director, Sharma Industries
-              </p>
-            </div>
-            <div class="testimonial-card fade-in">
-              <p class="quote">
-                "Exceptional service and deep knowledge of the software. They
-                customized a report for us that saved hours of work each week."
-              </p>
-              <p class="client-name">
-                - Priya Deshpande, CFO, Pune Logistics Co.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
     </main>
-
+    
     <footer id="contact">
-      <div class="container footer-content">
-        <div class="footer-about">
-          <h4>Tirupati Tally Solutions</h4>
-          <p>
-            Your authorised partner for Tally products and services in Pune and
-            surrounding areas. We are dedicated to providing expert solutions
-            and support.
-          </p>
+        <div class="container footer-content">
+            <div class="footer-about">
+                <h4>Tirupati Tally Solutions</h4>
+                <p>Your authorised partner for Tally products and services in Pune and surrounding areas. We are dedicated to providing expert solutions and support.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#plans">Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa-solid fa-envelope"></i> sales@tirupatitally.com</p>
+            </div>
         </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#plans">Plans</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Contact Us</h4>
-          <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
-          <p><i class="fa-solid fa-envelope"></i> sales@tirupatitally.com</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2024 Tirupati Tally Solutions. All Rights Reserved.</p>
-      </div>
+        <div class="footer-bottom"><p>© 2024 Tirupati Tally Solutions. All Rights Reserved.</p></div>
     </footer>
-
+    
     <div class="chatbot">
-      <div class="chatbot-header">
-        <h3>Tally Helper</h3>
-        <button class="chatbot-close-btn">×</button>
-      </div>
-      <ul class="chat-window">
-        <li class="chat-message bot">Hi there! How can I help you today?</li>
-      </ul>
-      <div class="chatbot-input"></div>
+        <div class="chatbot-header"><h3>Tally Helper</h3><button class="chatbot-close-btn">×</button></div>
+        <ul class="chat-window"><li class="chat-message bot">Hi there! How can I help you today?</li></ul>
+        <div class="chatbot-input"></div>
     </div>
-    <button class="chatbot-toggler">
-      <i class="fa-solid fa-comment-dots"></i>
-    </button>
+    <button class="chatbot-toggler"><i class="fa-solid fa-comment-dots"></i></button>
 
     <div id="payment-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-button">×</span>
-        <div id="success-message" style="display: none; text-align: center">
-          <h2>Thank You!</h2>
-          <p>
-            Your details have been sent. We will verify your payment and contact
-            you shortly.
-          </p>
-        </div>
-        <div id="modal-main-content">
-          <h2 id="modal-title">Complete Your Purchase</h2>
-          <div class="modal-layout">
-            <div class="modal-qr-section">
-              <h3>Step 1: Scan & Pay</h3>
-              <img id="qr-code-image" src="" alt="Scan to Pay" />
-              <p><strong>Amount:</strong> ₹<span id="qr-amount"></span></p>
-              <p>
-                <strong>UPI ID:</strong>
-                <span class="upi-id">your-upi-id@okhdfcbank</span>
-              </p>
-              <div id="modal-features"></div>
-            </div>
-            <div class="modal-form-section">
-              <h3>Step 2: Submit Your Details</h3>
-              <form id="payment-form">
-                <input
-                  type="hidden"
-                  name="access_key"
-                  value="YOUR_ACCESS_KEY_HERE"
-                />
-                <input type="hidden" id="form-plan-name" name="plan" />
-                <input
-                  type="hidden"
-                  id="form-subject"
-                  name="subject"
-                  value="New Tally Order from Website - Pune"
-                />
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <div id="success-message" style="display: none; text-align: center;"><h2>Thank You!</h2><p>Your details have been sent. We will verify your payment and contact you shortly.</p></div>
+            <div id="modal-main-content">
+                <h2 id="modal-title">Complete Your Purchase</h2>
+                <div class="modal-layout">
+                    <div class="modal-qr-section">
+                        <h3>Step 1: Scan & Pay</h3>
+                        <img id="qr-code-image" src="" alt="Scan to Pay"><p><strong>Amount:</strong> ₹<span id="qr-amount"></span></p>
+                        <p><strong>UPI ID:</strong> <span class="upi-id">your-upi-id@okhdfcbank</span></p>
+                        <div id="modal-features"></div>
+                    </div>
+                    <div class="modal-form-section">
+                        <h3>Step 2: Submit Your Details</h3>
+                        <form id="payment-form">
+                            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                            <input type="hidden" id="form-plan-name" name="plan">
+                            <input type="hidden" id="form-subject" name="subject" value="New Tally Order from Website - Pune">
+                            
+                            <label>Full Name *</label><input type="text" name="fullName" required>
+                            <label>Email Address *</label><input type="email" name="email" required>
+                            <label>10-Digit Mobile *</label><input type="tel" name="mobile" required pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number." inputmode="numeric">
+                            <label>Company Name (Optional)</label><input type="text" name="companyName">
+                            
+                            <div class="dynamic-field-container" id="gstin-container">
+                                <label for="gstin_number">GSTIN Number *</label>
+                                <input type="text" name="gstin_number" id="gstin_number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}" title="Please enter a valid GSTIN Number.">
+                            </div>
+                            <div class="dynamic-field-container" id="auditor-container">
+                                <label for="mrn_number">MRN Number *</label><input type="text" name="mrn_number" id="mrn_number">
+                                <label for="enrollment_number">Enrollment Number *</label><input type="text" name="enrollment_number" id="enrollment_number">
+                                <label for="dob">Date of Birth *</label><input type="date" name="dob" id="dob">
+                            </div>
 
-                <label>Full Name *</label
-                ><input type="text" name="fullName" required />
-                <label>Email Address *</label
-                ><input type="email" name="email" required />
-                <label>10-Digit Mobile *</label
-                ><input
-                  type="tel"
-                  name="mobile"
-                  required
-                  pattern="[0-9]{10}"
-                  title="Please enter a valid 10-digit mobile number."
-                  inputmode="numeric"
-                />
-                <label>Company Name (Optional)</label
-                ><input type="text" name="companyName" />
+                            <label>12-Digit UPI Transaction ID *</label><input type="text" name="upi_id" required pattern="[0-9]{12}" title="Please enter the 12-digit UPI Transaction ID." inputmode="numeric" placeholder="Enter ID after payment">
+                            <label>Message / Notes (Optional)</label><textarea name="message" rows="3" placeholder="Any special instructions?"></textarea>
 
-                <div class="dynamic-field-container" id="gstin-container">
-                  <label for="gstin_number">GSTIN Number *</label>
-                  <input
-                    type="text"
-                    name="gstin_number"
-                    id="gstin_number"
-                    pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}"
-                    title="Please enter a valid GSTIN Number."
-                  />
+                            <button type="submit" class="cta-button">Submit & Verify Payment</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="dynamic-field-container" id="auditor-container">
-                  <label for="mrn_number">MRN Number *</label
-                  ><input type="text" name="mrn_number" id="mrn_number" />
-                  <label for="enrollment_number">Enrollment Number *</label
-                  ><input
-                    type="text"
-                    name="enrollment_number"
-                    id="enrollment_number"
-                  />
-                  <label for="dob">Date of Birth *</label
-                  ><input type="date" name="dob" id="dob" />
-                </div>
-
-                <label>12-Digit UPI Transaction ID *</label
-                ><input
-                  type="text"
-                  name="upi_id"
-                  required
-                  pattern="[0-9]{12}"
-                  title="Please enter the 12-digit UPI Transaction ID."
-                  inputmode="numeric"
-                  placeholder="Enter ID after payment"
-                />
-                <label>Message / Notes (Optional)</label
-                ><textarea
-                  name="message"
-                  rows="3"
-                  placeholder="Any special instructions?"
-                ></textarea>
-
-                <button type="submit" class="cta-button">
-                  Submit & Verify Payment
-                </button>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-
+    
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
