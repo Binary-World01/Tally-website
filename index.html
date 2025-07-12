@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SECURITY: Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'https://api.web3forms.com'; form-action 'https://api.web3forms.com'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'https://api.web3forms.com'; form-action 'https://api.web3forms.com'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
     <title>Tirupati Tally Solutions | Premium Tally Partner in Pune</title>
 
     <!-- SECURITY: Subresource Integrity (SRI) Hashes -->
@@ -31,8 +31,10 @@
 
     <header>
         <div class="container">
-            <div class="logo"><img src="assets/placeholder-logo.png" alt="Tirupati Tally Solutions Logo"></div>
-            <nav>
+            <div class="logo"><img src="assets/logo.png" alt="Tirupati Tally Solutions Logo"></div>
+            
+            <nav id="nav-menu">
+                <button id="menu-close" class="menu-button" aria-label="Close Menu">×</button>
                 <ul>
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#why-us" class="nav-link">Why Us</a></li>
@@ -42,16 +44,22 @@
                     <li><a href="#testimonials" class="nav-link">Clients</a></li>
                     <li><a href="https://help.tallysolutions.com/" target="_blank" rel="noopener noreferrer" class="nav-link">Help</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li>
-                        <button id="theme-toggle" title="Toggle dark mode">
-                            <i class="fa-solid fa-moon icon-moon"></i>
-                            <i class="fa-solid fa-sun icon-sun"></i>
-                        </button>
-                    </li>
                 </ul>
             </nav>
+            
+            <div class="header-actions">
+                <button id="theme-toggle" class="menu-button" title="Toggle dark mode">
+                    <i class="fa-solid fa-moon icon-moon"></i>
+                    <i class="fa-solid fa-sun icon-sun"></i>
+                </button>
+                <button id="menu-toggle" class="menu-button" aria-label="Open Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
+
+    <div id="overlay"></div>
 
     <main>
         <section id="home" class="hero">
