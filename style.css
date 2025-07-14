@@ -104,6 +104,9 @@ header .container {
   object-fit: cover;
   border: 2px solid var(--c-border);
 }
+nav#nav-menu {
+  display: none;
+}
 nav ul {
   list-style: none;
   margin: 0;
@@ -150,7 +153,7 @@ nav ul li a.active {
   background-color: var(--c-bg-light);
 }
 #menu-toggle {
-  display: none;
+  display: flex;
 }
 #menu-close {
   display: none;
@@ -226,11 +229,6 @@ html.dark-mode .icon-sun {
     color: var(--c-text-body);
   }
 }
-@media (max-width: 992px) {
-  nav#nav-menu {
-    gap: 15px;
-  }
-}
 .hero {
   background: linear-gradient(135deg, var(--c-bg-light), var(--c-bg));
   padding: 60px 0;
@@ -238,7 +236,7 @@ html.dark-mode .icon-sun {
 }
 .hero-grid {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 40px;
 }
@@ -381,75 +379,14 @@ html.dark-mode .icon-sun {
   background-color: var(--c-bg);
 }
 #download,
-#other-services,
 #about {
   text-align: center;
 }
-.team-info{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.team-section {
-  margin-top: 80px;
-}
-.team-title {
-  margin-bottom: 40px;
-}
-.team-grid {
-  
-  gap: 40px;
-}
-
-.web-team-grid {
-  max-width: 500px;
-  margin: 0 auto;
-}
-.team-member {
+#other-services .plans-grid h3 {
   text-align: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.team-photo-container {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border: 3px solid var(--c-bg);
-  overflow: hidden;
-}
-.team-member .icon-container {
-  display: inline-block;
-  background-color: var(--c-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  color: var(--primary-blue);
-}
-html.dark-mode .team-member .icon-container {
-  background-color: var(--c-bg-light);
-}
-.team-photo-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.team-member h4 {
-  margin: 0 0 5px 0;
-  color: var(--c-text-heading);
-  font-size: 1.2rem;
-}
-.team-member p {
-  margin: 0;
-  color: var(--c-text-body);
 }
 .feature-grid,
-.service-grid,
-.testimonial-grid {
+.service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
@@ -458,6 +395,99 @@ html.dark-mode .team-member .icon-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 30px;
+}
+#about {
+  text-align: center;
+}
+/* --- Corrected Team Section Styles --- */
+#about { 
+    text-align: center;
+}
+
+.team-section { 
+    margin-top: 80px; 
+}
+
+.team-title { 
+    margin-bottom: 40px; 
+}
+
+.team-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.team-grid .team-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 70px;
+}
+
+.web-team-grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.team-member {
+    text-align: center;
+    max-width: 220px; /* Limits width to help wrapping on tablets */
+}
+
+.team-photo-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 3px solid var(--c-bg);
+    overflow: hidden;
+}
+
+.team-member .icon-container {
+    background-color: var(--c-bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--primary-blue);
+}
+html.dark-mode .team-member .icon-container {
+    background-color: var(--c-bg-dark);
+}
+
+.team-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member h4 {
+    margin: 0 0 5px 0;
+    color: var(--c-text-heading);
+    font-size: 1.2rem;
+}
+
+.team-member p.designation {
+    margin: 0;
+    color: var(--c-text-body);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.team-member p.contact-number {
+    margin: 8px 0 0 0;
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+html.dark-mode .team-member p.contact-number {
+    color: var(--c-text-body-dark);
 }
 .feature-item {
   text-align: center;
@@ -484,6 +514,10 @@ html.dark-mode .team-member .icon-container {
   transform: translateY(-8px);
   box-shadow: 0 12px 24px rgba(23, 43, 77, 0.08);
   border-color: var(--primary-blue);
+}
+html.dark-mode .service-item,
+html.dark-mode .plan-card {
+  background-color: var(--c-bg-dark-light);
 }
 html.dark-mode .service-item:hover,
 html.dark-mode .plan-card:hover {
@@ -869,6 +903,7 @@ html.dark-mode .footer-bottom {
 }
 #inquiry-modal .modal-content {
   max-width: 550px;
+  text-align: center;
 }
 .close-button {
   color: #aaa;
