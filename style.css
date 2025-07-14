@@ -1,17 +1,13 @@
 /* --- PREMIUM TALLY SERVICE STYLESHEET --- */
-
-/* 1. Global Setup, Fonts & Color Variables */
 :root {
   --primary-blue: #1a3d7d;
   --accent-gold: #d4af37;
-  /* Light Theme */
   --c-bg: #ffffff;
   --c-bg-light: #f8f9fa;
   --c-bg-rgb: 255, 255, 255;
   --c-text-heading: #091e42;
   --c-text-body: #42526e;
   --c-border: #e0e0e0;
-  /* Dark Theme */
   --c-bg-dark: #0d1117;
   --c-bg-darker: #010409;
   --c-bg-dark-light: #161b22;
@@ -65,6 +61,10 @@ h3 {
   font-size: 1.6rem;
   margin: 0 0 20px 0;
 }
+h3 > i {
+  margin-right: 10px;
+  color: var(--primary-blue);
+}
 h4.features-title {
   font-size: 1rem;
   color: var(--c-text-body);
@@ -82,8 +82,6 @@ section {
   margin: -40px auto 40px auto;
   color: var(--c-text-body);
 }
-
-/* 2. Header & Navigation with Theme Toggle */
 header {
   background-color: rgba(var(--c-bg-rgb), 0.85);
   backdrop-filter: blur(12px);
@@ -105,9 +103,6 @@ header .container {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--c-border);
-}
-nav#nav-menu {
-  display: none;
 }
 nav ul {
   list-style: none;
@@ -155,7 +150,7 @@ nav ul li a.active {
   background-color: var(--c-bg-light);
 }
 #menu-toggle {
-  display: flex;
+  display: none;
 }
 #menu-close {
   display: none;
@@ -182,9 +177,7 @@ html.dark-mode .icon-sun {
   opacity: 1;
   pointer-events: auto;
 }
-
-/* Desktop & Mobile Nav Styles */
-@media (min-width: 1101px) {
+@media (min-width: 1200px) {
   nav#nav-menu {
     display: block;
   }
@@ -192,10 +185,7 @@ html.dark-mode .icon-sun {
     display: none;
   }
 }
-@media (max-width: 1100px) {
-  #menu-toggle {
-    display: flex;
-  }
+@media (max-width: 1199px) {
   nav#nav-menu {
     display: block;
     position: fixed;
@@ -236,8 +226,11 @@ html.dark-mode .icon-sun {
     color: var(--c-text-body);
   }
 }
-
-/* 3. Hero Section */
+@media (max-width: 992px) {
+  nav#nav-menu {
+    gap: 15px;
+  }
+}
 .hero {
   background: linear-gradient(135deg, var(--c-bg-light), var(--c-bg));
   padding: 60px 0;
@@ -245,7 +238,7 @@ html.dark-mode .icon-sun {
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   align-items: center;
   gap: 40px;
 }
@@ -350,8 +343,6 @@ html.dark-mode .icon-sun {
     transform: scale(0.9);
   }
 }
-
-/* 4. Buttons */
 .cta-button,
 .purchase-btn {
   background: linear-gradient(45deg, var(--accent-gold), #e7c66a);
@@ -378,22 +369,87 @@ html.dark-mode .icon-sun {
 .purchase-btn {
   margin-top: auto;
 }
-
-/* 5. Content Sections & Plan Cards */
 #why-us,
 #plans,
-#download {
+#download,
+#other-services,
+#about {
   background-color: var(--c-bg-light);
 }
 #testimonials,
 #services {
   background-color: var(--c-bg);
 }
-#download {
+#download,
+#other-services,
+#about {
   text-align: center;
 }
+.team-info{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.team-section {
+  margin-top: 80px;
+}
+.team-title {
+  margin-bottom: 40px;
+}
+.team-grid {
+  
+  gap: 40px;
+}
+
+.web-team-grid {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.team-member {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.team-photo-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--c-bg);
+  overflow: hidden;
+}
+.team-member .icon-container {
+  display: inline-block;
+  background-color: var(--c-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--primary-blue);
+}
+html.dark-mode .team-member .icon-container {
+  background-color: var(--c-bg-light);
+}
+.team-photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.team-member h4 {
+  margin: 0 0 5px 0;
+  color: var(--c-text-heading);
+  font-size: 1.2rem;
+}
+.team-member p {
+  margin: 0;
+  color: var(--c-text-body);
+}
 .feature-grid,
-.service-grid {
+.service-grid,
+.testimonial-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
@@ -446,8 +502,9 @@ html.dark-mode .plan-card:hover {
   gap: 8px;
   margin-bottom: 15px;
 }
-.tss-duration {
-  grid-template-columns: 1fr 1fr;
+.tss-duration,
+.biz-duration {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 .duration-btn {
   padding: 10px 5px;
@@ -546,8 +603,6 @@ html.dark-mode .plan-card:hover {
     grid-template-columns: 1fr;
   }
 }
-
-/* 6. Footer, Animations, Chatbot, Modal */
 footer {
   background-color: var(--primary-blue);
   color: #b3c5e8;
@@ -812,6 +867,9 @@ html.dark-mode .footer-bottom {
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
+#inquiry-modal .modal-content {
+  max-width: 550px;
+}
 .close-button {
   color: #aaa;
   position: absolute;
@@ -825,9 +883,43 @@ html.dark-mode .footer-bottom {
 .close-button:hover {
   color: var(--c-text-heading);
 }
-#modal-title {
+#modal-title,
+#inquiry-modal-title {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+}
+#inquiry-modal .section-subtitle {
+  margin-bottom: 20px;
+}
+.contact-modal-content {
+  text-align: center;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+.contact-item {
+  text-decoration: none;
+  color: var(--c-text-heading);
+  background-color: var(--c-bg-light);
+  border: 1px solid var(--c-border);
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.2s ease;
+}
+.contact-item:hover {
+  border-color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+.contact-item i {
+  color: var(--primary-blue);
 }
 .modal-layout {
   display: flex;
@@ -894,6 +986,7 @@ html.dark-mode .footer-bottom {
   box-shadow: 0 0 0 3px rgba(0, 82, 255, 0.2);
   outline: none;
 }
-#success-message h2 {
+#success-message h2,
+#inquiry-success-message h2 {
   color: #00875a;
 }
