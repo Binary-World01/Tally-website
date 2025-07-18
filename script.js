@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const paymentModal = document.getElementById("payment-modal");
   const inquiryModal = document.getElementById("inquiry-modal");
 
-  // Payment Modal Setup
+  // Payment Modal
   if (paymentModal) {
     const body = document.body;
     const payCloseBtn = paymentModal.querySelector(".close-button");
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Inquiry Modal Logic
+  // Inquiry Modal
   if (inquiryModal) {
     const inquiryBtn = document.getElementById("inquiry-btn");
     const inqCloseBtn = inquiryModal.querySelector(".close-button");
@@ -183,41 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Part 4: Mobile Navigation Sidebar ---
-  const menuToggle = document.getElementById("menu-toggle");
-  const menuClose = document.getElementById("menu-close");
-  const navMenu = document.getElementById("nav-menu");
-  const overlay = document.getElementById("overlay");
-  const allNavLinks = document.querySelectorAll("#nav-menu .nav-link");
-  if (menuToggle && navMenu && menuClose && overlay) {
-    menuToggle.addEventListener("click", () => {
-      navMenu.classList.add("active");
-      overlay.classList.add("active");
-    });
-    const closeMenu = () => {
-      navMenu.classList.remove("active");
-      overlay.classList.remove("active");
-    };
-    menuClose.addEventListener("click", closeMenu);
-    overlay.addEventListener("click", closeMenu);
-    allNavLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        const href = e.target.getAttribute("href");
-        if (href && href.startsWith("#")) {
-          e.preventDefault();
-          closeMenu();
-          const targetElement = document.querySelector(href);
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: "smooth" });
-          }
-        } else {
-          closeMenu();
-        }
-      });
-    });
-  }
-
-  // --- Part 5 & 6: Animations & Active Nav Link ---
+  // --- Part 4: Animations, Nav Observers, Chatbot etc. ---
   const sections = document.querySelectorAll("main section[id]");
   const navLinksForScroll = document.querySelectorAll('a.nav-link[href^="#"]');
   const fadeInObserver = new IntersectionObserver(
@@ -251,8 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
     { rootMargin: "-40% 0px -60% 0px" }
   );
   sections.forEach((section) => navObserver.observe(section));
-
-  // --- Part 7: Chatbot Logic ---
   const chatbot = document.querySelector(".chatbot");
   const chatbotToggler = document.querySelector(".chatbot-toggler");
   if (chatbot && chatbotToggler) {
@@ -335,8 +299,6 @@ document.addEventListener("DOMContentLoaded", () => {
       chatbot.classList.remove("active")
     );
   }
-
-  // --- Part 8: Force page to load at the very top ---
   if (history.scrollRestoration) {
     history.scrollRestoration = "manual";
   }
