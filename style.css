@@ -1,4 +1,6 @@
 /* --- PREMIUM TALLY SERVICE STYLESHEET --- */
+
+/* 1. Global Setup, Fonts & Color Variables */
 :root {
   --primary-blue: #1a3d7d;
   --accent-gold: #d4af37;
@@ -396,10 +398,6 @@ html.dark-mode .icon-sun {
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 30px;
 }
-#about {
-  text-align: center;
-}
-/* --- Corrected Team Section Styles --- */
 #about { 
     text-align: center;
 }
@@ -515,10 +513,6 @@ html.dark-mode .team-member p.contact-number {
   box-shadow: 0 12px 24px rgba(23, 43, 77, 0.08);
   border-color: var(--primary-blue);
 }
-html.dark-mode .service-item,
-html.dark-mode .plan-card {
-  background-color: var(--c-bg-dark-light);
-}
 html.dark-mode .service-item:hover,
 html.dark-mode .plan-card:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
@@ -616,6 +610,11 @@ html.dark-mode .plan-card:hover {
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 }
+@media (max-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .testimonial-card {
   background-color: var(--c-bg-light);
   padding: 30px;
@@ -632,10 +631,27 @@ html.dark-mode .plan-card:hover {
   color: var(--primary-blue);
   margin-top: 15px;
 }
-@media (max-width: 768px) {
-  .testimonial-grid {
-    grid-template-columns: 1fr;
-  }
+#hiring {
+  background-color: var(--primary-blue);
+  color: white;
+}
+#hiring h2 {
+  color: white;
+}
+.hiring-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.hiring-text {
+  flex: 1;
+  text-align: left;
+}
+.hiring-text p {
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 footer {
   background-color: var(--primary-blue);
@@ -989,17 +1005,22 @@ html.dark-mode .footer-bottom {
 #modal-features .feature-list {
   font-size: 0.9rem;
 }
-.modal-form-section label {
+.modal-form-section label,
+#inquiry-form-container label {
   display: block;
   margin: 15px 0 5px;
   font-weight: 600;
   color: var(--c-text-heading);
+  text-align: left;
 }
-.modal-form-section .dynamic-field-container {
+.modal-form-section .dynamic-field-container,
+#inquiry-form-container .dynamic-field-container {
   display: none;
 }
 .modal-form-section input,
-.modal-form-section textarea {
+.modal-form-section textarea,
+#inquiry-form-container input,
+#inquiry-form-container textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--c-border);
@@ -1011,12 +1032,19 @@ html.dark-mode .footer-bottom {
   background-color: var(--c-bg);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.modal-form-section textarea {
+#upi_id {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.modal-form-section textarea,
+#inquiry-form-container textarea {
   resize: vertical;
   min-height: 80px;
 }
 .modal-form-section input:focus,
-.modal-form-section textarea:focus {
+.modal-form-section textarea:focus,
+#inquiry-form-container input:focus,
+#inquiry-form-container textarea:focus {
   border-color: var(--primary-blue);
   box-shadow: 0 0 0 3px rgba(0, 82, 255, 0.2);
   outline: none;
@@ -1024,4 +1052,56 @@ html.dark-mode .footer-bottom {
 #success-message h2,
 #inquiry-success-message h2 {
   color: #00875a;
+}
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+.form-checkbox input {
+  width: auto;
+  height: 1.2em;
+  accent-color: var(--primary-blue);
+}
+.form-checkbox label {
+  margin: 0;
+}
+.mobile-nav {
+  display: none;
+}
+@media (max-width: 1199px) {
+  header nav ul {
+    display: none;
+  }
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--c-bg);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  html.dark-mode .mobile-nav {
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  }
+  .mobile-nav-link {
+    flex: 1;
+    text-align: center;
+    padding: 10px 5px;
+    text-decoration: none;
+    color: var(--c-text-body);
+    font-weight: 600;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-nav-link i {
+    font-size: 1.2rem;
+  }
 }
