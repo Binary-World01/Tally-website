@@ -283,7 +283,7 @@
                             <li><i class="fa-solid fa-check"></i>Manage Cashflow Effectively</li>
                             <li><i class="fa-solid fa-check"></i>Get Paid Faster via Integration</li>
                         </ul>
-                        <button class="purchase-btn" data-plan="Credflow Integration" data-amount="10000" data-qr="assets/qr-credflow.png" data-fields="none">Buy Annual Plan</button>
+                        <button id="credflow-inquiry-btn" class="purchase-btn">Inquire Now</button>
                     </div>
 
                     <div class="plan-card fade-in">
@@ -341,7 +341,7 @@
                     <p>We're always looking for passionate individuals to join us in our mission. If you have a knack for technology and a passion for helping businesses succeed, we'd love to hear from you.</p>
                 </div>
                 <div class="hiring-action">
-                    <a href="mailto:careers@tirupatitally.com" class="cta-button">View Open Positions</a>
+                    <a href="mailto:tallysolutionspune@gmail.com" class="cta-button">View Open Positions</a>
                 </div>
             </div>
         </section>
@@ -360,6 +360,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#plans">Plans</a></li>
+                    <li><a href="#" id="query-link">Contact for Query</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
@@ -370,6 +371,22 @@
         </div>
         <div class="footer-bottom"><p>© 2024 Tirupati Tally Solutions. All Rights Reserved.</p></div>
     </footer>
+    
+    <!-- Mobile Navigation Bar -->
+    <nav class="mobile-nav">
+        <a href="#plans" class="mobile-nav-link">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <span>Plans</span>
+        </a>
+        <a href="https://help.tallysolutions.com/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">
+            <i class="fa-solid fa-life-ring"></i>
+            <span>Help</span>
+        </a>
+        <a href="#contact" class="mobile-nav-link">
+            <i class="fa-solid fa-phone-volume"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
     
     <div class="chatbot">
         <div class="chatbot-header"><h3>Tally Helper</h3><button class="chatbot-close-btn">×</button></div>
@@ -437,6 +454,55 @@
                 <div class="contact-info">
                     <a href="tel:+917039194374" class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 70391 94374</span></a>
                     <a href="mailto:matrixmates123@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i><span>matrixmates123@gmail.com</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="credflow-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <div class="contact-modal-content">
+                <h2>Credflow Inquiry</h2>
+                <p>To inquire about Credflow automation and annual plans, please contact us directly.</p>
+                <div class="contact-info">
+                    <a href="tel:+919405055551" class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 94050 55551</span></a>
+                    <a href="mailto:tallysolutionspune@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i><span>tallysolutionspune@gmail.com</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="query-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <div class="query-modal-content">
+                <h2 style="text-align: center;">Contact for Query</h2>
+                <p style="text-align: center; margin-bottom: 25px;">Please fill out the form below and we will get back to you as soon as possible.</p>
+                <form id="query-form" style="text-align: left;">
+                     <input type="hidden" name="access_key" value="0bcf9e70-6d4b-4b1f-94f4-7d52a2202611">
+                     <input type="hidden" name="subject" value="New Query from Website">
+                     
+                     <label for="query-name">Name *</label>
+                     <input type="text" id="query-name" name="name" required>
+                     
+                     <label for="query-email">Email *</label>
+                     <input type="email" id="query-email" name="email" required>
+                     
+                     <label for="query-phone">Phone Number *</label>
+                     <input type="tel" id="query-phone" name="phone" required pattern="[0-9]{10}">
+                     
+                     <label for="query-company">Company Name</label>
+                     <input type="text" id="query-company" name="company">
+                     
+                     <label for="query-problem">Problem Description *</label>
+                     <textarea id="query-problem" name="problem" rows="4" required></textarea>
+                     
+                     <button type="submit" class="cta-button" style="width: 100%; margin-top: 20px;">Submit Query</button>
+                </form>
+                <div id="query-success-message" style="display: none; text-align: center;">
+                    <h2>Thank You!</h2>
+                    <p>Your query has been submitted. We will contact you shortly.</p>
                 </div>
             </div>
         </div>
