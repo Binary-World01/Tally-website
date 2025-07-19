@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Part 2: Modal Logic ---
   const paymentModal = document.getElementById("payment-modal");
   const inquiryModal = document.getElementById("inquiry-modal");
+  const credflowModal = document.getElementById("credflow-modal");
+  const queryModal = document.getElementById("query-modal");
 
   // Payment Modal
   if (paymentModal) {
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     body.addEventListener("click", (e) => {
       const purchaseButton = e.target.closest(".purchase-btn");
-      if (purchaseButton && purchaseButton.id !== "inquiry-btn") {
+      if (purchaseButton && purchaseButton.id !== "inquiry-btn" && purchaseButton.id !== "credflow-inquiry-btn") {
         e.preventDefault();
         const modalTitle = paymentModal.querySelector("#modal-title");
         const planNameInput = paymentModal.querySelector("#form-plan-name");
@@ -144,6 +146,84 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Credflow Inquiry Modal
+  if (credflowModal) {
+    const credflowInquiryBtn = document.getElementById("credflow-inquiry-btn");
+    const credflowCloseBtn = credflowModal.querySelector(".close-button");
+
+    if (credflowInquiryBtn) {
+        credflowInquiryBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          credflowModal.style.display = "block";
+        });
+    }
+
+    const closeCredflowModal = () => {
+      credflowModal.style.display = "none";
+    };
+    credflowCloseBtn.addEventListener("click", closeCredflowModal);
+    window.addEventListener("click", (event) => {
+      if (event.target == credflowModal) closeCredflowModal();
+    });
+  }
+
+  // Query Modal
+  if (queryModal) {
+    const queryLink = document.getElementById("query-link");
+    const queryCloseBtn = queryModal.querySelector(".close-button");
+    const queryForm = document.getElementById("query-form");
+    const querySuccessMessage = queryModal.querySelector("#query-success-message");
+
+    if (queryLink) {
+        queryLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            queryForm.style.display = "block";
+            querySuccessMessage.style.display = "none";
+            queryForm.reset();
+            queryModal.style.display = "block";
+        });
+    }
+
+    const closeQueryModal = () => {
+      queryModal.style.display = "none";
+    };
+    queryCloseBtn.addEventListener("click", closeQueryModal);
+    window.addEventListener("click", (event) => {
+      if (event.target == queryModal) closeQueryModal();
+    });
+
+    queryForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const submitButton = queryForm.querySelector('button[type="submit"]');
+        const formData = new FormData(queryForm);
+        const customerName = formData.get("name");
+        formData.set("subject", `New Query from ${customerName}`);
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+
+        fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    queryForm.style.display = "none";
+                    querySuccessMessage.style.display = "block";
+                } else {
+                    console.error("Submission Error:", data);
+                    alert("Submission failed.");
+                }
+            })
+            .catch(() => alert("A network error occurred."))
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = "Submit Query";
+            });
+    });
+}
+
   // --- Part 3: Dynamic Plan Duration Toggles ---
   document.querySelectorAll(".duration-grid").forEach((grid) => {
     grid.addEventListener("click", (e) => {
@@ -166,10 +246,12 @@ document.addEventListener("DOMContentLoaded", () => {
       featureList.style.opacity = "0";
       setTimeout(() => {
         priceElement.textContent = newPriceText;
-        purchaseButton.dataset.plan = basePlanName + planSuffix;
-        purchaseButton.dataset.amount = newAmount;
-        if (newQrPath) {
-          purchaseButton.dataset.qr = newQrPath;
+        if(purchaseButton) {
+          purchaseButton.dataset.plan = basePlanName + planSuffix;
+          purchaseButton.dataset.amount = newAmount;
+          if (newQrPath) {
+            purchaseButton.dataset.qr = newQrPath;
+          }
         }
         featureList.innerHTML = "";
         features.forEach((featureText) => {
