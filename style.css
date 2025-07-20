@@ -1093,10 +1093,13 @@ html.dark-mode .footer-bottom {
       font-size: 2.2rem;
       margin-bottom: 40px;
   }
-  .plans-grid {
+  .service-grid, .plans-grid {
       grid-template-columns: 1fr;
       max-width: 400px;
       margin: 0 auto;
+  }
+   .service-item, .plan-card {
+      padding: 25px;
   }
   .plan-card.featured {
       transform: scale(1); /* Reset featured scaling */
