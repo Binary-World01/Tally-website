@@ -470,7 +470,7 @@ html.dark-mode .hero-text h1 {
     align-items: center;
 }
 .partner-logos img {
-    max-height: 50px;
+    max-height: 300px;
     opacity: 0.8;
 }
 
@@ -1475,4 +1475,8 @@ html.dark-mode .footer-bottom {
   .chatbot {
       bottom: 155px;
   }
+  .partner-logos img {
+    max-height: 100px;
+    opacity: 0.8;
+}
 }
