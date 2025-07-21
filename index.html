@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'https://api.web3forms.com'; form-action 'https://api.web3forms.com'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
     <title>Tirupati Tally Solutions | Premium Tally Partner in Pune</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png"> <!-- ADD YOUR FAVICON HERE -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -41,6 +42,7 @@
             </nav>
             
             <div class="header-actions">
+                 <button id="callback-btn" class="cta-button-small">Request a Callback</button>
                 <button id="theme-toggle" class="menu-button" title="Toggle dark mode">
                     <i class="fa-solid fa-moon icon-moon"></i>
                     <i class="fa-solid fa-sun icon-sun"></i>
@@ -54,10 +56,25 @@
     <main>
         <section id="home" class="hero">
             <div class="container hero-grid">
-                <div class="hero-text fade-in">
-                    <h1>Pune's Premier Tally Service Provider</h1>
-                    <p>From Tirupati Tally Solutions, we provide elite implementation, genuine software sales, and expert local support to elevate your business.</p>
-                    <a href="#plans" class="cta-button">View Products & Pricing</a>
+                <div class="hero-text">
+                    <div class="hero-rating fade-in">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <span>Rated 4.9/5 by our Pune Clients</span>
+                    </div>
+                    <h1 class="fade-in" style="transition-delay: 0.1s;">Pune's Premier Tally Service Provider</h1>
+                    <p class="fade-in" style="transition-delay: 0.2s;">From Tirupati Tally Solutions, we provide elite implementation, genuine software sales, and expert local support to elevate your business.</p>
+                    <a href="#plans" class="cta-button fade-in" style="transition-delay: 0.3s;">
+                        View Products & Pricing
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <div class="hero-trust-bar fade-in" style="transition-delay: 0.4s;">
+                        <span><i class="fa-solid fa-check"></i> Official Tally Partner</span>
+                        <span><i class="fa-solid fa-check"></i> 1000+ Pune Businesses Served</span>
+                    </div>
                 </div>
                 <div class="hero-visual">
                     <div class="visual-card main-card">
@@ -65,6 +82,15 @@
                     </div>
                     <div class="visual-card float-card-1"><i class="fa-solid fa-file-invoice-dollar"></i><span>Invoices Sent</span></div>
                     <div class="visual-card float-card-2"><i class="fa-solid fa-shield-halved"></i><span>GST Verified</span></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="partners">
+            <div class="container">
+                <p class="partner-title">Your Authorised and Certified Tally Partner in Pune</p>
+                <div class="partner-logos">
+                    <img src="assets/tally-partner-logo.png" alt="Official Tally Partner Logo">
                 </div>
             </div>
         </section>
@@ -331,6 +357,24 @@
                         <p class="client-name">- Priya Deshpande, CFO, Pune Logistics Co.</p>
                     </div>
                 </div>
+                 <div id="rate-us-section" class="rate-us-section fade-in">
+                    <h3>How would you rate our service?</h3>
+                    <div class="star-rating">
+                        <i class="fa-regular fa-star" data-value="1"></i>
+                        <i class="fa-regular fa-star" data-value="2"></i>
+                        <i class="fa-regular fa-star" data-value="3"></i>
+                        <i class="fa-regular fa-star" data-value="4"></i>
+                        <i class="fa-regular fa-star" data-value="5"></i>
+                    </div>
+                    <form id="rating-form" class="rating-form">
+                        <input type="hidden" name="access_key" value="0bcf9e70-6d4b-4b1f-94f4-7d52a2202611">
+                        <input type="hidden" id="star-value" name="rating" value="">
+                        <input type="hidden" name="subject" value="New Website Rating Submission">
+                        <textarea name="comment" placeholder="Tell us more about your experience..." rows="3" required></textarea>
+                        <button type="submit" class="cta-button">Submit Feedback</button>
+                    </form>
+                     <p id="rating-success-message" style="display:none; color: #00875a; font-weight: bold;">Thank you for your feedback!</p>
+                </div>
             </div>
         </section>
         
@@ -360,19 +404,30 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#plans">Plans</a></li>
+                    <li><a href="#rate-us-section">Rate Us</a></li>
                     <li><a href="#" id="query-link">Contact for Query</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
                 <h4>Contact Us</h4>
-                <p><i class="fa-solid fa-phone"></i> +91 94050 55551</p>
-                <p><i class="fa-solid fa-envelope"></i> tallysolutionspune@gmail.com</p>
+                <p><a href="tel:+919405055551"><i class="fa-solid fa-phone"></i> +91 94050 55551</a></p>
+                <p><a href="mailto:tallysolutionspune@gmail.com"><i class="fa-solid fa-envelope"></i> tallysolutionspune@gmail.com</a></p>
             </div>
         </div>
         <div class="footer-bottom"><p>© 2024 Tirupati Tally Solutions. All Rights Reserved.</p></div>
     </footer>
     
-    <!-- Mobile Navigation Bar -->
+    <div class="floating-action-container">
+        <a href="#" id="back-to-top" class="floating-btn" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></a>
+        <button class="chatbot-toggler"><i class="fa-solid fa-comment-dots"></i></button>
+    </div>
+    
+    <div class="chatbot">
+        <div class="chatbot-header"><h3>Tally Helper</h3><button class="chatbot-close-btn">×</button></div>
+        <ul class="chat-window"><li class="chat-message bot">Hi there! How can I help you today?</li></ul>
+        <div class="chatbot-input"></div>
+    </div>
+    
     <nav class="mobile-nav">
         <a href="#plans" class="mobile-nav-link">
             <i class="fa-solid fa-file-invoice-dollar"></i>
@@ -388,13 +443,6 @@
         </a>
     </nav>
     
-    <div class="chatbot">
-        <div class="chatbot-header"><h3>Tally Helper</h3><button class="chatbot-close-btn">×</button></div>
-        <ul class="chat-window"><li class="chat-message bot">Hi there! How can I help you today?</li></ul>
-        <div class="chatbot-input"></div>
-    </div>
-    <button class="chatbot-toggler"><i class="fa-solid fa-comment-dots"></i></button>
-
     <div id="payment-modal" class="modal">
         <div class="modal-content">
             <span class="close-button">×</span>
@@ -503,6 +551,32 @@
                 <div id="query-success-message" style="display: none; text-align: center;">
                     <h2>Thank You!</h2>
                     <p>Your query has been submitted. We will contact you shortly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="callback-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <div class="query-modal-content">
+                <h2 style="text-align: center;">Request a Callback</h2>
+                <p style="text-align: center; margin-bottom: 25px;">Leave your details and we will call you back shortly.</p>
+                <form id="callback-form" style="text-align: left;">
+                     <input type="hidden" name="access_key" value="0bcf9e70-6d4b-4b1f-94f4-7d52a2202611">
+                     <input type="hidden" name="subject" value="New Callback Request from Website">
+                     
+                     <label for="callback-name">Name *</label>
+                     <input type="text" id="callback-name" name="name" required>
+                                          
+                     <label for="callback-phone">Phone Number *</label>
+                     <input type="tel" id="callback-phone" name="phone" required pattern="[0-9]{10}">
+                                          
+                     <button type="submit" class="cta-button" style="width: 100%; margin-top: 20px;">Request Call</button>
+                </form>
+                <div id="callback-success-message" style="display: none; text-align: center;">
+                    <h2>Thank You!</h2>
+                    <p>We have received your request and will call you back soon.</p>
                 </div>
             </div>
         </div>
