@@ -12,12 +12,32 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("theme", currentTheme);
     });
   }
+  
+  // --- Back to Top Button Logic ---
+  const backToTopButton = document.getElementById("back-to-top");
+  if(backToTopButton) {
+      window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+              backToTopButton.classList.add("visible");
+          } else {
+              backToTopButton.classList.remove("visible");
+          }
+      });
+      backToTopButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+          });
+      });
+  }
 
   // --- Part 2: Modal Logic ---
   const paymentModal = document.getElementById("payment-modal");
   const inquiryModal = document.getElementById("inquiry-modal");
   const credflowModal = document.getElementById("credflow-modal");
   const queryModal = document.getElementById("query-modal");
+  const callbackModal = document.getElementById("callback-modal");
 
   // Payment Modal
   if (paymentModal) {
@@ -222,7 +242,131 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitButton.textContent = "Submit Query";
             });
     });
-}
+  }
+  
+  // Callback Modal
+  if (callbackModal) {
+      const callbackBtn = document.getElementById("callback-btn");
+      const callbackCloseBtn = callbackModal.querySelector(".close-button");
+      const callbackForm = document.getElementById("callback-form");
+      
+      callbackBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          callbackModal.querySelector("#callback-success-message").style.display = 'none';
+          callbackModal.querySelector('#callback-form').style.display = 'block';
+          callbackForm.reset();
+          callbackModal.style.display = "block";
+      });
+
+      const closeCallbackModal = () => {
+        callbackModal.style.display = "none";
+      };
+      callbackCloseBtn.addEventListener("click", closeCallbackModal);
+      window.addEventListener("click", (event) => {
+          if (event.target == callbackModal) closeCallbackModal();
+      });
+
+       callbackForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const submitButton = callbackForm.querySelector('button[type="submit"]');
+        const formData = new FormData(callbackForm);
+        
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+
+        fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    callbackModal.querySelector('#callback-form').style.display = 'none';
+                    callbackModal.querySelector("#callback-success-message").style.display = "block";
+                } else {
+                    alert("Submission failed. Please try again.");
+                }
+            })
+            .catch(() => alert("A network error occurred."))
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = "Request Call";
+            });
+      });
+  }
+
+  // --- Interactive Star Rating ---
+  const starRating = document.querySelector('.star-rating');
+  if(starRating) {
+      const stars = starRating.querySelectorAll('i');
+      const ratingForm = document.getElementById('rating-form');
+      const starValueInput = document.getElementById('star-value');
+
+      const handleStarClick = function() {
+          const val = this.dataset.value;
+          starValueInput.value = val;
+          ratingForm.style.display = 'block';
+
+          stars.forEach((s, index) => {
+              if (index < val) {
+                  s.classList.replace('fa-regular', 'fa-solid');
+              } else {
+                  s.classList.replace('fa-solid', 'fa-regular');
+              }
+              s.removeEventListener('mouseover', handleStarMouseover);
+              s.removeEventListener('mouseout', handleStarMouseout);
+          });
+      };
+
+      const handleStarMouseover = function() {
+          const val = this.dataset.value;
+          stars.forEach((s, index) => {
+              if (index < val) {
+                  s.classList.replace('fa-regular', 'fa-solid');
+              }
+          });
+      };
+
+      const handleStarMouseout = function() {
+          stars.forEach(s => s.classList.replace('fa-solid', 'fa-regular'));
+      };
+
+      stars.forEach(star => {
+          star.addEventListener('mouseover', handleStarMouseover);
+          star.addEventListener('mouseout', handleStarMouseout);
+          star.addEventListener('click', handleStarClick);
+      });
+      
+      ratingForm.addEventListener('submit', (e) => {
+           e.preventDefault();
+           if (!starValueInput.value) {
+               alert("Please select a star rating first.");
+               return;
+           }
+           const submitButton = ratingForm.querySelector('button[type="submit"]');
+           submitButton.disabled = true;
+           submitButton.textContent = "Submitting...";
+           const formData = new FormData(ratingForm);
+           fetch("https://api.web3forms.com/submit", {
+               method: 'POST',
+               body: formData
+           })
+           .then(res => res.json())
+           .then(data => {
+               if(data.success){
+                   ratingForm.style.display = 'none';
+                   document.getElementById('rating-success-message').style.display = 'block';
+               } else {
+                   alert('There was an error submitting your feedback.');
+               }
+           })
+           .catch(() => alert('A network error occurred.'))
+           .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = "Submit Feedback";
+           });
+      });
+  }
 
   // --- Part 3: Dynamic Plan Duration Toggles ---
   document.querySelectorAll(".duration-grid").forEach((grid) => {
