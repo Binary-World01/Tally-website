@@ -12,25 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("theme", currentTheme);
     });
   }
-  
-  // --- Back to Top Button Logic ---
-  const backToTopButton = document.getElementById("back-to-top");
-  if(backToTopButton) {
-      window.addEventListener("scroll", () => {
-          if (window.pageYOffset > 300) {
-              backToTopButton.classList.add("visible");
-          } else {
-              backToTopButton.classList.remove("visible");
-          }
-      });
-      backToTopButton.addEventListener("click", (e) => {
-          e.preventDefault();
-          window.scrollTo({
-              top: 0,
-              behavior: "smooth"
-          });
-      });
-  }
 
   // --- Part 2: Modal Logic ---
   const paymentModal = document.getElementById("payment-modal");
@@ -38,11 +19,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const credflowModal = document.getElementById("credflow-modal");
   const queryModal = document.getElementById("query-modal");
   const callbackModal = document.getElementById("callback-modal");
+  const comparisonModal = document.getElementById("comparison-modal");
+  const blogModals = [
+      document.getElementById('blog-modal-1'),
+      document.getElementById('blog-modal-2'),
+      document.getElementById('blog-modal-3')
+  ].filter(Boolean); // Filter out nulls if a modal doesn't exist
+
+
+  // Generic Modal Opener for Read More links
+    document.querySelectorAll('.read-more').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = link.getAttribute('data-modal');
+            const modalToOpen = document.getElementById(modalId);
+            if(modalToOpen) {
+                modalToOpen.style.display = 'block';
+            }
+        });
+    });
+
+  // Generic closer for ALL modals
+    document.querySelectorAll('.modal').forEach(modal => {
+        const closeBtn = modal.querySelector('.close-button');
+        if(closeBtn){
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                 modal.style.display = 'none';
+            }
+        });
+    });
+
 
   // Payment Modal
   if (paymentModal) {
     const body = document.body;
-    const payCloseBtn = paymentModal.querySelector(".close-button");
     const payForm = document.getElementById("payment-form");
 
     body.addEventListener("click", (e) => {
@@ -116,14 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const closePaymentModal = () => {
-      paymentModal.style.display = "none";
-    };
-    payCloseBtn.addEventListener("click", closePaymentModal);
-    window.addEventListener("click", (event) => {
-      if (event.target == paymentModal) closePaymentModal();
-    });
-
     function setupDynamicFields(fieldsToShow) {
       const gstinContainer = document.getElementById("gstin-container");
       const auditorContainer = document.getElementById("auditor-container");
@@ -150,47 +157,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inquiry Modal
   if (inquiryModal) {
     const inquiryBtn = document.getElementById("inquiry-btn");
-    const inqCloseBtn = inquiryModal.querySelector(".close-button");
-
     inquiryBtn.addEventListener("click", (e) => {
       e.preventDefault();
       inquiryModal.style.display = "block";
-    });
-
-    const closeInquiryModal = () => {
-      inquiryModal.style.display = "none";
-    };
-    inqCloseBtn.addEventListener("click", closeInquiryModal);
-    window.addEventListener("click", (event) => {
-      if (event.target == inquiryModal) closeInquiryModal();
     });
   }
 
   // Credflow Inquiry Modal
   if (credflowModal) {
     const credflowInquiryBtn = document.getElementById("credflow-inquiry-btn");
-    const credflowCloseBtn = credflowModal.querySelector(".close-button");
-
     if (credflowInquiryBtn) {
         credflowInquiryBtn.addEventListener("click", (e) => {
           e.preventDefault();
           credflowModal.style.display = "block";
         });
     }
-
-    const closeCredflowModal = () => {
-      credflowModal.style.display = "none";
-    };
-    credflowCloseBtn.addEventListener("click", closeCredflowModal);
-    window.addEventListener("click", (event) => {
-      if (event.target == credflowModal) closeCredflowModal();
-    });
   }
 
   // Query Modal
   if (queryModal) {
     const queryLink = document.getElementById("query-link");
-    const queryCloseBtn = queryModal.querySelector(".close-button");
     const queryForm = document.getElementById("query-form");
     const querySuccessMessage = queryModal.querySelector("#query-success-message");
 
@@ -204,24 +190,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const closeQueryModal = () => {
-      queryModal.style.display = "none";
-    };
-    queryCloseBtn.addEventListener("click", closeQueryModal);
-    window.addEventListener("click", (event) => {
-      if (event.target == queryModal) closeQueryModal();
-    });
-
     queryForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const submitButton = queryForm.querySelector('button[type="submit"]');
         const formData = new FormData(queryForm);
         const customerName = formData.get("name");
         formData.set("subject", `New Query from ${customerName}`);
-
         submitButton.disabled = true;
         submitButton.textContent = "Submitting...";
-
         fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 body: formData,
@@ -247,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Callback Modal
   if (callbackModal) {
       const callbackBtn = document.getElementById("callback-btn");
-      const callbackCloseBtn = callbackModal.querySelector(".close-button");
       const callbackForm = document.getElementById("callback-form");
       
       callbackBtn.addEventListener("click", (e) => {
@@ -256,14 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
           callbackModal.querySelector('#callback-form').style.display = 'block';
           callbackForm.reset();
           callbackModal.style.display = "block";
-      });
-
-      const closeCallbackModal = () => {
-        callbackModal.style.display = "none";
-      };
-      callbackCloseBtn.addEventListener("click", closeCallbackModal);
-      window.addEventListener("click", (event) => {
-          if (event.target == callbackModal) closeCallbackModal();
       });
 
        callbackForm.addEventListener("submit", (e) => {
@@ -367,6 +334,32 @@ document.addEventListener("DOMContentLoaded", () => {
            });
       });
   }
+  
+   // --- Plan Comparison Logic ---
+    if(comparisonModal) {
+        const checkboxes = document.querySelectorAll('.plan-selector input[type="checkbox"]');
+        const compareBtn = document.getElementById('compare-btn');
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const checked = document.querySelectorAll('.plan-selector input[type="checkbox"]:checked');
+                if (checked.length > 2) {
+                    checkbox.checked = false; 
+                }
+                compareBtn.disabled = document.querySelectorAll('.plan-selector input[type="checkbox"]:checked').length !== 2;
+            });
+        });
+        
+        compareBtn.addEventListener('click', () => {
+             const checked = document.querySelectorAll('.plan-selector input[type="checkbox"]:checked');
+             if(checked.length === 2) {
+                 const plan1 = checked[0].dataset.plan;
+                 const plan2 = checked[1].dataset.plan;
+                 buildComparisonTable(plan1, plan2);
+                 comparisonModal.style.display = 'block';
+             }
+        });
+    }
 
   // --- Part 3: Dynamic Plan Duration Toggles ---
   document.querySelectorAll(".duration-grid").forEach((grid) => {
@@ -530,3 +523,39 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   window.scrollTo(0, 0);
 });
+
+function buildComparisonTable(planKey1, planKey2) {
+    const tableHead = document.querySelector('.comparison-table thead');
+    const tableBody = document.querySelector('.comparison-table tbody');
+    
+    const check = `<i class="fa-solid fa-check"></i>`;
+    const cross = `<i class="fa-solid fa-times"></i>`;
+    const plus = `<i class="fa-solid fa-circle-plus" style="color:#36b37e;"></i>`;
+
+    const planData = {
+        silver: { name: 'TallyPrime Silver' },
+        gold: { name: 'TallyPrime Gold' },
+        server: { name: 'TallyPrime Server'}
+    };
+    
+    const features = [
+        { feature: 'Core Accounting & GST', silver: check, gold: check, server: check },
+        { feature: 'User Access (Concurrency)', silver: '1 User at a time', gold: 'Up to 10 Users', server: 'Many Concurrent Users' },
+        { feature: 'License Type', silver: 'Single PC', gold: 'Multi-PC (in LAN)', server: 'Server-based' },
+        { feature: 'Remote Access (via TSS)', silver: check, gold: check, server: check },
+        { feature: 'Performance under Heavy Load', silver: 'Standard', gold: 'Standard', server: `${plus} High Speed, No Lag` },
+        { feature: 'Security Control', silver: 'Standard', gold: 'Standard', server: `${plus} Admin with User Monitoring` },
+        { feature: 'Ideal Business Type', silver: 'Solopreneur / Startup', gold: 'Growing SME / Multi-Department', server: 'Enterprise / Large Corporation' },
+        { feature: 'Primary Use Case', silver: 'Individual Management', gold: 'Team Collaboration', server: 'High-Volume Data Integrity' }
+    ];
+
+    let headHTML = `<tr><th>Feature</th><th>${planData[planKey1].name}</th><th>${planData[planKey2].name}</th></tr>`;
+    let bodyHTML = '';
+    
+    features.forEach(f => {
+        bodyHTML += `<tr><td>${f.feature}</td><td>${f[planKey1]}</td><td>${f[planKey2]}</td></tr>`;
+    });
+    
+    tableHead.innerHTML = headHTML;
+    tableBody.innerHTML = bodyHTML;
+}
