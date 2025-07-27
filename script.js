@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- Part 1: Dark Mode Toggle ---
   const themeToggle = document.getElementById("theme-toggle");
@@ -402,7 +403,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Part 4: Animations, Nav Observers, Chatbot etc. ---
+  // --- Part 4: UI Interactions & Observers ---
+
+  // Mobile Navigation Logic
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuClose = document.getElementById('menu-close');
+  const navMenu = document.getElementById('nav-menu');
+  const overlay = document.getElementById('overlay');
+  const navLinksInMenu = navMenu.querySelectorAll('a.nav-link');
+
+  if (menuToggle && navMenu && menuClose && overlay) {
+    const openMenu = () => {
+      navMenu.classList.add('active');
+      overlay.classList.add('active');
+    };
+
+    const closeMenu = () => {
+      navMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    };
+
+    menuToggle.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    
+    navLinksInMenu.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  // Intersection Observers
   const sections = document.querySelectorAll("main section[id]");
   const navLinksForScroll = document.querySelectorAll('a.nav-link[href^="#"]');
   const fadeInObserver = new IntersectionObserver(
