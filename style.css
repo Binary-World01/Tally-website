@@ -1395,8 +1395,15 @@ html.dark-mode .footer-bottom {
       display: none;
   }
   header #menu-toggle {
-    display: flex;
+    display: none; /* Hide hamburger menu on small phones */
   }
+
+  /* Fix for invisible element blocking clicks on mobile */
+  #overlay,
+  nav#nav-menu {
+    display: none;
+  }
+
   section {
       padding: 60px 0;
   }
@@ -1428,6 +1435,14 @@ html.dark-mode .footer-bottom {
   .blog-grid {
     grid-template-columns: 1fr;
   }
+  .modal-layout {
+    flex-direction: column; /* Stack form elements vertically */
+  }
+  .modal-content {
+      padding: 25px;
+      max-height: 85vh; /* Ensure modal doesn't exceed screen height */
+      overflow-y: auto; /* Allow vertical scrolling inside modal */
+  }
   .mobile-nav {
     display: flex;
     position: fixed;
@@ -1445,11 +1460,11 @@ html.dark-mode .footer-bottom {
   .mobile-nav-link {
     flex: 1;
     text-align: center;
-    padding: 12px 10px; /* Increased padding */
+    padding: 12px 10px;
     text-decoration: none;
     color: var(--c-text-body);
     font-weight: 600;
-    font-size: 0.85rem; /* Increased font size */
+    font-size: 0.85rem;
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -1479,5 +1494,5 @@ html.dark-mode .footer-bottom {
   .partner-logos img {
     max-height: 100px;
     opacity: 0.8;
-}
+  }
 }
