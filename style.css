@@ -938,12 +938,14 @@ html.dark-mode .footer-bottom {
   overflow: hidden;
   transform: scale(0.5);
   opacity: 0;
+  pointer-events: none; /* Prevent clicks when hidden */
   transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28),
     opacity 0.2s ease, background-color 0.3s ease;
 }
 .chatbot.active {
   transform: scale(1);
   opacity: 1;
+  pointer-events: auto; /* Allow clicks when active */
 }
 .chatbot-header {
   background: var(--primary-blue);
