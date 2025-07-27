@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Part 4: UI Interactions & Observers ---
 
-  // Mobile Navigation Logic
+  // Mobile Navigation Logic (for tablets/desktops with a menu)
   const menuToggle = document.getElementById('menu-toggle');
   const menuClose = document.getElementById('menu-close');
   const navMenu = document.getElementById('nav-menu');
