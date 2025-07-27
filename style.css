@@ -1,3 +1,4 @@
+
 /* --- PREMIUM TALLY SERVICE STYLESHEET --- */
 
 /* 1. Global Setup, Fonts & Color Variables */
@@ -1390,11 +1391,11 @@ html.dark-mode .footer-bottom {
   main {
       margin-bottom: 70px;
   }
-  header #menu-toggle {
-    display: none;
-  }
    header #callback-btn {
       display: none;
+  }
+  header #menu-toggle {
+    display: flex;
   }
   section {
       padding: 60px 0;
