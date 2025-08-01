@@ -702,6 +702,45 @@ html.dark-mode .plan-card:hover {
   gap: 30px;
 }
 
+/* --- LIVE SUPPORT SECTION --- */
+#live-support {
+    background-color: var(--primary-blue-darker);
+    color: white;
+    text-align: center;
+}
+#live-support h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+#live-support h2 .fa-microsoft-teams {
+    font-size: 2.5rem;
+    margin-right: 15px;
+    vertical-align: middle;
+    color: #4B53BC;
+    background-color: white;
+    padding: 8px;
+    border-radius: 8px;
+}
+#live-support .section-subtitle {
+    color: var(--c-text-body-dark);
+    margin-top: -10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+#live-support .teams-btn {
+    background: white;
+    color: var(--primary-blue);
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+#live-support .teams-btn:hover {
+    background: var(--c-bg-light);
+    color: var(--primary-blue-darker);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
 /* INTERACTIVE RATING SECTION */
 .rate-us-section {
     text-align: center;
