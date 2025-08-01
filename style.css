@@ -1,4 +1,3 @@
-
 /* --- PREMIUM TALLY SERVICE STYLESHEET --- */
 
 /* 1. Global Setup, Fonts & Color Variables */
@@ -488,6 +487,9 @@ html.dark-mode .hero-text h1 {
 #other-services .plans-grid h3 {
   text-align: center;
 }
+#other-services .plans-grid h3 .fa-aws {
+    color: #FF9900;
+}
 .feature-grid,
 .service-grid {
   display: grid;
@@ -866,6 +868,43 @@ html.dark-mode .footer-bottom {
   border-top-color: var(--c-border-dark);
 }
 
+.whatsapp-fab {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 998;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+.whatsapp-fab:hover {
+    transform: scale(1.1);
+    animation-play-state: paused;
+}
+
+@keyframes pulse-whatsapp {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
 .chatbot-toggler {
   position: fixed;
   bottom: 30px;
@@ -1067,7 +1106,7 @@ html.dark-mode .footer-bottom {
 .modal-content.large {
     max-width: 900px;
 }
-#inquiry-modal .modal-content, #credflow-modal .modal-content, #query-modal .modal-content, #callback-modal .modal-content {
+#inquiry-modal .modal-content, #credflow-modal .modal-content, #aws-modal .modal-content, #query-modal .modal-content, #callback-modal .modal-content {
   max-width: 550px;
   text-align: center;
 }
@@ -1387,6 +1426,9 @@ html.dark-mode .footer-bottom {
     .blog-grid {
         grid-template-columns: 1fr 1fr;
     }
+     .plans-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
 }
 @media (max-width: 767px) {
   /* --- MOBILE PHONE STYLES --- */
@@ -1396,16 +1438,6 @@ html.dark-mode .footer-bottom {
    header #callback-btn {
       display: none;
   }
-  header #menu-toggle {
-    display: none; /* Hide hamburger menu on small phones */
-  }
-
-  /* Fix for invisible element blocking clicks on mobile */
-  #overlay,
-  nav#nav-menu {
-    display: none;
-  }
-
   section {
       padding: 60px 0;
   }
@@ -1438,12 +1470,12 @@ html.dark-mode .footer-bottom {
     grid-template-columns: 1fr;
   }
   .modal-layout {
-    flex-direction: column; /* Stack form elements vertically */
+    flex-direction: column;
   }
   .modal-content {
       padding: 25px;
-      max-height: 85vh; /* Ensure modal doesn't exceed screen height */
-      overflow-y: auto; /* Allow vertical scrolling inside modal */
+      max-height: 85vh;
+      overflow-y: auto;
   }
   .mobile-nav {
     display: flex;
@@ -1489,6 +1521,11 @@ html.dark-mode .footer-bottom {
   }
   .chatbot-toggler {
       bottom: 85px;
+      right: 20px;
+  }
+   .whatsapp-fab {
+      bottom: 85px;
+      left: 20px;
   }
   .chatbot {
       bottom: 155px;
