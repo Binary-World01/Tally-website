@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   // --- Part 1: Dark Mode Toggle ---
   const themeToggle = document.getElementById("theme-toggle");
@@ -18,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const paymentModal = document.getElementById("payment-modal");
   const inquiryModal = document.getElementById("inquiry-modal");
   const credflowModal = document.getElementById("credflow-modal");
+  const awsModal = document.getElementById("aws-modal");
   const queryModal = document.getElementById("query-modal");
   const callbackModal = document.getElementById("callback-modal");
   const comparisonModal = document.getElementById("comparison-modal");
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     body.addEventListener("click", (e) => {
       const purchaseButton = e.target.closest(".purchase-btn");
-      if (purchaseButton && purchaseButton.id !== "inquiry-btn" && purchaseButton.id !== "credflow-inquiry-btn") {
+      if (purchaseButton && purchaseButton.id !== "inquiry-btn" && purchaseButton.id !== "credflow-inquiry-btn" && purchaseButton.id !== "aws-inquiry-btn") {
         e.preventDefault();
         const modalTitle = paymentModal.querySelector("#modal-title");
         const planNameInput = paymentModal.querySelector("#form-plan-name");
@@ -175,6 +175,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // AWS Inquiry Modal
+  if (awsModal) {
+    const awsInquiryBtn = document.getElementById("aws-inquiry-btn");
+    if (awsInquiryBtn) {
+        awsInquiryBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          awsModal.style.display = "block";
+        });
+    }
+  }
+
   // Query Modal
   if (queryModal) {
     const queryLink = document.getElementById("query-link");
@@ -222,46 +233,54 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   // Callback Modal
-  if (callbackModal) {
-      const callbackBtn = document.getElementById("callback-btn");
-      const callbackForm = document.getElementById("callback-form");
-      
-      callbackBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          callbackModal.querySelector("#callback-success-message").style.display = 'none';
-          callbackModal.querySelector('#callback-form').style.display = 'block';
-          callbackForm.reset();
-          callbackModal.style.display = "block";
-      });
+    if (callbackModal) {
+        const callbackBtn = document.getElementById("callback-btn");
+        const callbackForm = document.getElementById("callback-form");
 
-       callbackForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const submitButton = callbackForm.querySelector('button[type="submit"]');
-        const formData = new FormData(callbackForm);
-        
-        submitButton.disabled = true;
-        submitButton.textContent = "Submitting...";
+        callbackBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            callbackModal.querySelector("#callback-success-message").style.display = 'none';
+            callbackModal.querySelector('#callback-form').style.display = 'block';
+            callbackForm.reset();
+            callbackModal.style.display = "block";
+        });
 
-        fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                body: formData,
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    callbackModal.querySelector('#callback-form').style.display = 'none';
-                    callbackModal.querySelector("#callback-success-message").style.display = "block";
-                } else {
-                    alert("Submission failed. Please try again.");
+        callbackForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const nameInput = callbackForm.querySelector('#callback-name');
+            const phoneInput = callbackForm.querySelector('#callback-phone');
+            const reasonInput = callbackForm.querySelector('#callback-reason');
+            
+            if (!nameInput.checkValidity() || !phoneInput.checkValidity() || !reasonInput.checkValidity()) {
+                // If form is invalid, let the browser show validation messages
+                // You may need to temporarily add a submit button to the form for this to work well
+                // For simplicity, we just check values. `required` attribute handles the UI.
+                if(!nameInput.value || !phoneInput.value || !reasonInput.value) {
+                    alert("Please fill out all required fields.");
+                    return;
                 }
-            })
-            .catch(() => alert("A network error occurred."))
-            .finally(() => {
-                submitButton.disabled = false;
-                submitButton.textContent = "Request Call";
-            });
-      });
-  }
+            }
+
+            const name = nameInput.value;
+            const phone = phoneInput.value;
+            const reason = reasonInput.value;
+            const businessPhoneNumber = "919405055551";
+
+            const message = `*New Callback Request from Website*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Reason:* ${reason}`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${businessPhoneNumber}?text=${encodedMessage}`;
+
+            callbackModal.querySelector('#callback-form').style.display = 'none';
+            callbackModal.querySelector("#callback-success-message").style.display = "block";
+
+            window.open(whatsappUrl, '_blank');
+
+            setTimeout(() => {
+                callbackModal.style.display = "none";
+            }, 3000);
+        });
+    }
 
   // --- Interactive Star Rating ---
   const starRating = document.querySelector('.star-rating');
@@ -410,9 +429,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuClose = document.getElementById('menu-close');
   const navMenu = document.getElementById('nav-menu');
   const overlay = document.getElementById('overlay');
-  const navLinksInMenu = navMenu.querySelectorAll('a.nav-link');
-
+  
   if (menuToggle && navMenu && menuClose && overlay) {
+    const navLinksInMenu = navMenu.querySelectorAll('a.nav-link');
     const openMenu = () => {
       navMenu.classList.add('active');
       overlay.classList.add('active');
