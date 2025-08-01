@@ -1,3 +1,11 @@
+// --- Initial Theme Load (to prevent FOUC) ---
+(function() {
+    try {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') { document.documentElement.classList.add('dark-mode'); }
+    } catch (e) { console.error("Could not apply dark mode theme.", e); }
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- Part 1: Dark Mode Toggle ---
   const themeToggle = document.getElementById("theme-toggle");
@@ -248,23 +256,14 @@ document.addEventListener("DOMContentLoaded", () => {
         callbackForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            const nameInput = callbackForm.querySelector('#callback-name');
-            const phoneInput = callbackForm.querySelector('#callback-phone');
-            const reasonInput = callbackForm.querySelector('#callback-reason');
-            
-            if (!nameInput.checkValidity() || !phoneInput.checkValidity() || !reasonInput.checkValidity()) {
-                // If form is invalid, let the browser show validation messages
-                // You may need to temporarily add a submit button to the form for this to work well
-                // For simplicity, we just check values. `required` attribute handles the UI.
-                if(!nameInput.value || !phoneInput.value || !reasonInput.value) {
-                    alert("Please fill out all required fields.");
-                    return;
-                }
+            if (!callbackForm.checkValidity()) {
+                callbackForm.reportValidity();
+                return;
             }
 
-            const name = nameInput.value;
-            const phone = phoneInput.value;
-            const reason = reasonInput.value;
+            const name = callbackForm.querySelector('#callback-name').value;
+            const phone = callbackForm.querySelector('#callback-phone').value;
+            const reason = callbackForm.querySelector('#callback-reason').value;
             const businessPhoneNumber = "919405055551";
 
             const message = `*New Callback Request from Website*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Reason:* ${reason}`;
