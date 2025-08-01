@@ -9,7 +9,7 @@
         default-src 'self'; 
         script-src 'self'; 
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; 
-        font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; 
+        font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; 
         img-src 'self' https://images.unsplash.com data:; 
         connect-src 'self' https://api.web3forms.com; 
         form-action 'self' https://api.web3forms.com; 
@@ -50,7 +50,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
     
     <link rel="stylesheet" href="style.css">
     
@@ -677,8 +677,6 @@
                 <h2 style="text-align: center;">Request a Callback</h2>
                 <p style="text-align: center; margin-bottom: 25px;">Leave your details and we will call you back shortly.</p>
                 <form id="callback-form" style="text-align: left;">
-                     <input type="hidden" name="access_key" value="607d2511-5ed1-4ebf-b60b-7443cacc6a24">
-                     <input type="hidden" name="subject" value="New Callback Request from Website">
                      
                      <label for="callback-name">Name *</label>
                      <input type="text" id="callback-name" name="name" required>
