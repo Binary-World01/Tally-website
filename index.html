@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Security Meta Tags -->
-  
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://api.web3forms.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://api.web3forms.com; frame-src 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="permissions-policy" content="geolocation=(), microphone=(), camera=()">
@@ -36,6 +37,7 @@
     <meta name="twitter:image" content="https://www.tirupatitally.netlify.app/assets/logo.png">
 
     <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,6 +46,14 @@
     
     <link rel="stylesheet" href="style.css">
     
+    <script>
+        (function() {
+            try {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark') { document.documentElement.classList.add('dark-mode'); }
+            } catch (e) { console.error("Could not apply dark mode theme.", e); }
+        })();
+    </script>
 </head>
 <body>
 
@@ -57,7 +67,7 @@
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#download" class="nav-link">Download</a></li>
+                    <li><a href="https://tallysolutions.com/download/" target="_blank" rel="noopener noreferrer" class="nav-link">Download</a></li>
                     <li><a href="#plans" class="nav-link">Plans</a></li>
                      <li><a href="#blog" class="nav-link">Blog</a></li>
                     <li><a href="#testimonials" class="nav-link">Clients</a></li>
@@ -68,11 +78,11 @@
             
             <div class="header-actions">
                  <button id="callback-btn" class="cta-button-small">Request a Callback</button>
-                <button id="theme-toggle" class="menu-button" title="Toggle dark mode">
+                <button id="theme-toggle" class="menu-button" title="Toggle dark mode" aria-label="Toggle dark mode">
                     <i class="fa-solid fa-moon icon-moon"></i>
                     <i class="fa-solid fa-sun icon-sun"></i>
                 </button>
-               
+                
             </div>
         </div>
     </header>
@@ -209,7 +219,7 @@
         <section id="live-support">
             <div class="container">
                 <h2 class="fade-in"><i class="fa-brands fa-microsoft-teams"></i> Ask Your Queries Live & Online</h2>
-                <p class="section-subtitle fade-in">10:00 AM - 7:30 PM (Mon - Sat)</p>
+                <p class="section-subtitle fade-in">Have a quick question? Join our Microsoft Teams session for instant support from our experts.<br>Our team is available from 10:00 AM - 7:30 PM (Mon - Sat).</p>
                 <a href="https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmeetup-join%2F19%3Ameeting_OGY0ZmEyZmUtZTcxOS00MTg0LWJjY2EtMjM0YjI4ZGZhODFm%40thread.v2%2F0%3Fcontext%3D%257b%2522Tid%2522%253a%252266bcd9b7-2725-4893-bb96-9ae424774af6%2522%252c%2522Oid%2522%253a%2522d0f65dba-ae5f-4df7-85d7-386c5be3e425%2522%257d%26anon%3Dtrue&type=meetup-join&deeplinkId=701b4a7b-d8d2-4d4b-bce5-b8b91c6488f2&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true" class="cta-button teams-btn fade-in" target="_blank" rel="noopener noreferrer">
                     <i class="fa-solid fa-video"></i> Join Live Session
                 </a>
@@ -519,10 +529,10 @@
     <a href="https://wa.me/919405055551?text=Hello!%20I'm%20visiting%20your%20website%20and%20have%20a%20question." target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <button class="chatbot-toggler"><i class="fa-solid fa-comment-dots"></i></button>
+    <button class="chatbot-toggler" aria-label="Toggle chatbot"><i class="fa-solid fa-comment-dots"></i></button>
 
-    <div class="chatbot">
-        <div class="chatbot-header"><h3>Tally Helper</h3><button class="chatbot-close-btn">×</button></div>
+    <div class="chatbot" role="dialog" aria-modal="true" aria-labelledby="chatbot-header" aria-hidden="true">
+        <div class="chatbot-header" id="chatbot-header"><h3>Tally Helper</h3><button class="chatbot-close-btn" aria-label="Close chatbot">×</button></div>
         <ul class="chat-window"><li class="chat-message bot">Hi there! How can I help you today?</li></ul>
         <div class="chatbot-input"></div>
     </div>
@@ -531,6 +541,10 @@
         <a href="#plans" class="mobile-nav-link">
             <i class="fa-solid fa-file-invoice-dollar"></i>
             <span>Plans</span>
+        </a>
+        <a href="https://tallysolutions.com/download/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">
+             <i class="fa-solid fa-download"></i>
+            <span>Download</span>
         </a>
         <a href="https://help.tallysolutions.com/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">
             <i class="fa-solid fa-life-ring"></i>
@@ -544,9 +558,9 @@
     
     <!-- All Modals Below -->
     
-    <div id="payment-modal" class="modal">
+    <div id="payment-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-button">×</span>
+            <button class="close-button" aria-label="Close">×</button>
             <div id="success-message" style="display: none; text-align: center;"><h2>Thank You!</h2><p>Your details have been sent. We will verify your payment and contact you shortly.</p></div>
             <div id="modal-main-content">
                 <h2 id="modal-title">Complete Your Purchase</h2>
@@ -564,27 +578,27 @@
                             <input type="hidden" id="form-plan-name" name="plan">
                             <input type="hidden" id="form-subject" name="subject" value="New Tally Order from Website - Pune">
                             
-                            <label>Full Name *</label><input type="text" name="fullName" required>
-                            <label>Email Address *</label><input type="email" name="email" required>
-                            <label>Mobile Number *</label><input type="tel" name="mobile" required pattern="[0-9]{10}" required>
-                            <label>GST Number *</label><input type="text" id="gstNumber" name="gstNumber" placeholder="Enter GST Number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9,A-Z]{1}Z[0-9,A-Z]{1}" title="Please enter a valid GST Number." required>
-                            <label>Billing Address *</label><textarea name="billing_address" rows="3" required></textarea>
+                            <label for="fullNamePay">Full Name *</label><input type="text" id="fullNamePay" name="fullName" required>
+                            <label for="emailPay">Email Address *</label><input type="email" id="emailPay" name="email" required>
+                            <label for="mobilePay">Mobile Number *</label><input type="tel" id="mobilePay" name="mobile" required pattern="[0-9]{10}">
+                            <label for="gstNumber">GST Number *</label><input type="text" id="gstNumber" name="gstNumber" placeholder="Enter GST Number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}" title="Please enter a valid GST Number." required>
+                            <label for="billingAddress">Billing Address *</label><textarea id="billingAddress" name="billing_address" rows="3" required></textarea>
                             
                             <div class="dynamic-field-container" id="gstin-container">
                                 <label for="gstin_number">GSTIN Number</label>
                                 <input type="text" name="gstin_number" id="gstin_number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}" title="Please enter a valid GSTIN Number.">
                             </div>
                             <div class="dynamic-field-container" id="auditor-container">
-                                <label for="mrn_number">MRN Number *</label><input type="text" name="mrn_number" id="mrn_number" required>
-                                <label for="enrollment_number">Enrollment Number *</label><input type="text" name="enrollment_number" id="enrollment_number" required>
-                                <label for="dob">Date of Birth *</label><input type="date" name="dob" id="dob" required>
+                                <label for="mrn_number">MRN Number *</label><input type="text" name="mrn_number" id="mrn_number">
+                                <label for="enrollment_number">Enrollment Number *</label><input type="text" name="enrollment_number" id="enrollment_number">
+                                <label for="dob">Date of Birth *</label><input type="date" name="dob" id="dob">
                             </div>
                              <div class="form-checkbox">
                                 <input type="checkbox" id="training_needed" name="training_needed" value="yes">
                                 <label for="training_needed">Is Training Needed?</label>
                             </div>
 
-                            <label>UPI Transaction ID *</label><input id="upi_id" type="text" name="upi_id" required pattern="[0-9]{12}" title="Please enter the UPI Transaction ID." inputmode="numeric" placeholder="Enter ID after payment">
+                            <label for="upi_id">UPI Transaction ID *</label><input id="upi_id" type="text" name="upi_id" required pattern="[0-9]{12}" title="Please enter the 12-digit UPI Transaction ID." inputmode="numeric" placeholder="Enter ID after payment">
 
                             <button type="submit" class="cta-button">Submit & Verify Payment</button>
                         </form>
@@ -594,11 +608,11 @@
         </div>
     </div>
     
-    <div id="inquiry-modal" class="modal">
+    <div id="inquiry-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="inquiry-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-button">×</span>
+            <button class="close-button" aria-label="Close">×</button>
             <div class="contact-modal-content">
-                <h2>Web Development Inquiry</h2>
+                <h2 id="inquiry-title">Web Development Inquiry</h2>
                 <p>To discuss your project requirements, please get in touch with our web development team directly.</p>
                 <div class="contact-info">
                     <a href="tel:+917039194374" class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 94050 55521</span></a>
@@ -608,11 +622,11 @@
         </div>
     </div>
     
-    <div id="credflow-modal" class="modal">
+    <div id="credflow-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="credflow-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-button">×</span>
+            <button class="close-button" aria-label="Close">×</button>
             <div class="contact-modal-content">
-                <h2>Credflow Inquiry</h2>
+                <h2 id="credflow-title">Credflow Inquiry</h2>
                 <p>To inquire about Credflow automation and annual plans, please contact us directly.</p>
                 <div class="contact-info">
                     <a href="tel:+919405055551" class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 94050 55551</span></a>
@@ -622,11 +636,11 @@
         </div>
     </div>
     
-    <div id="aws-modal" class="modal">
+    <div id="aws-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="aws-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-button">×</span>
+            <button class="close-button" aria-label="Close">×</button>
             <div class="contact-modal-content">
-                <h2>Tally on AWS Inquiry</h2>
+                <h2 id="aws-title">Tally on AWS Inquiry</h2>
                 <p>To discuss running Tally on the cloud for enhanced security and accessibility, please contact us directly.</p>
                 <div class="contact-info">
                     <a href="tel:+919405055551" class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 94050 55551</span></a>
@@ -636,11 +650,11 @@
         </div>
     </div>
     
-    <div id="query-modal" class="modal">
+    <div id="query-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="query-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-button">×</span>
+            <button class="close-button" aria-label="Close">×</button>
             <div class="query-modal-content">
-                <h2 style="text-align: center;">Contact for Query</h2>
+                <h2 id="query-title" style="text-align: center;">Contact for Query</h2>
                 <p style="text-align: center; margin-bottom: 25px;">Please fill out the form below and we will get back to you as soon as possible.</p>
                 <form id="query-form" style="text-align: left;">
                      <input type="hidden" name="access_key" value="607d2511-5ed1-4ebf-b60b-7443cacc6a24">
@@ -671,11 +685,11 @@
         </div>
     </div>
     
-    <div id="callback-modal" class="modal">
+    <div id="callback-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="callback-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-button">×</span>
+            <button class="close-button" aria-label="Close">×</button>
             <div class="query-modal-content">
-                <h2 style="text-align: center;">Request a Callback</h2>
+                <h2 id="callback-title" style="text-align: center;">Request a Callback</h2>
                 <p style="text-align: center; margin-bottom: 25px;">Leave your details and we will call you back shortly.</p>
                 <form id="callback-form" style="text-align: left;">
                      
@@ -705,9 +719,9 @@
         </div>
     </div>
     
-    <div id="comparison-modal" class="modal">
+    <div id="comparison-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="comparison-title" aria-hidden="true">
         <div class="modal-content large">
-             <span class="close-button">×</span>
+             <button class="close-button" aria-label="Close">×</button>
              <h2 id="comparison-title">Plan Comparison</h2>
              <div class="comparison-table-container">
                 <table class="comparison-table">
@@ -719,14 +733,14 @@
     </div>
 
     <!-- Blog Post Modals -->
-    <div id="blog-modal-1" class="modal">
+    <div id="blog-modal-1" class="modal" role="dialog" aria-modal="true" aria-labelledby="blog-title-1" aria-hidden="true">
         <div class="modal-content large">
-            <span class="close-button">×</span>
+            <button class="close-button" aria-label="Close">×</button>
             <article class="blog-post-full">
                 <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Comparing Tally Prime Silver and Gold Licenses">
                 <div class="blog-content">
                     <span class="blog-category">Buying Guide</span>
-                    <h2>Tally Prime Silver vs. Gold: The 2025 Pune Business Guide</h2>
+                    <h2 id="blog-title-1">Tally Prime Silver vs. Gold: The 2025 Pune Business Guide</h2>
                     <p>As you plan your business strategy for 2025, choosing the right accounting software is a critical investment. For businesses in Pune, TallyPrime is the undisputed leader, but the choice between a Silver and Gold license often causes confusion. Let's clarify this so you can make the best decision for the upcoming financial year.</p>
                     
                     <h3>TallyPrime Silver: The Powerhouse for the Single User</h3>
@@ -747,7 +761,7 @@
                      <p>If you find that employees are waiting for their turn to use Tally, or you are manually exporting reports for your team, it's a clear sign that you have outgrown your Silver license. Upgrading to Gold will instantly boost your team's productivity.</p>
 
                      <h4>The Strategic Choice for Pune Businesses</h4>
-                     <p>If you're a new business in Pune and managing the accounts yourself, **start with Silver**. It's the most budget-friendly way to begin. The best part about Tally's licensing is its flexibility. As your Pune business expands and you hire more staff, you can **instantly upgrade from Silver to Gold** by paying only the price difference. This ensures your software scales with your success.</p>
+                     <p>If you're a new business in Pune and managing the accounts yourself, <strong>start with Silver</strong>. It's the most budget-friendly way to begin. The best part about Tally's licensing is its flexibility. As your Pune business expands and you hire more staff, you can <strong>instantly upgrade from Silver to Gold</strong> by paying only the price difference. This ensures your software scales with your success.</p>
                      
                      <p><strong>Need help deciding?</strong> <a href="#contact" class="cta-link">Contact our experts today</a> for a free consultation to find the perfect Tally solution for your business.</p>
                 </div>
@@ -755,14 +769,14 @@
         </div>
     </div>
     
-    <div id="blog-modal-2" class="modal">
+    <div id="blog-modal-2" class="modal" role="dialog" aria-modal="true" aria-labelledby="blog-title-2" aria-hidden="true">
         <div class="modal-content large">
-            <span class="close-button">×</span>
+            <button class="close-button" aria-label="Close">×</button>
              <article class="blog-post-full">
                 <img src="https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Tally customization report on a screen">
                 <div class="blog-content">
                     <span class="blog-category">Expert Tips</span>
-                    <h2>5 Must-Have Tally Customizations for Growing Businesses</h2>
+                    <h2 id="blog-title-2">5 Must-Have Tally Customizations for Growing Businesses</h2>
                     <p>TallyPrime is incredibly powerful right out of the box, but its true strength lies in its ability to be customized to fit your exact business processes. As your business grows, these small tweaks can lead to huge gains in efficiency. Here are five high-impact Tally customizations we recommend for every scaling business.</p>
                     
                     <ol>
@@ -778,18 +792,18 @@
         </div>
     </div>
 
-    <div id="blog-modal-3" class="modal">
+    <div id="blog-modal-3" class="modal" role="dialog" aria-modal="true" aria-labelledby="blog-title-3" aria-hidden="true">
         <div class="modal-content large">
-            <span class="close-button">×</span>
+            <button class="close-button" aria-label="Close">×</button>
             <article class="blog-post-full">
                  <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Person using Tally on a laptop remotely">
                 <div class="blog-content">
                     <span class="blog-category">Feature Deep Dive</span>
-                    <h2>Unlocking Remote Work: A Guide to Tally's Remote Access</h2>
+                    <h2 id="blog-title-3">Unlocking Remote Work: A Guide to Tally's Remote Access</h2>
                     <p>The modern business landscape demands flexibility. Whether you are a business owner traveling, a sales team on the field, or offering work-from-home options, having access to your company's financial data is essential. Tally's Remote Access feature is the secure key to unlocking this capability.</p>
 
                     <h4>What is Tally Remote Access and Why Do I Need TSS?</h4>
-                    <p>Remote Access is a feature provided with a valid **Tally Software Services (TSS) subscription**. It allows authorized users to log in to your company data from anywhere in the world. Crucially, your data remains 100% secure on your main office computer; Remote Access simply provides a secure, encrypted portal to view and work on that data.</p>
+                    <p>Remote Access is a feature provided with a valid <strong>Tally Software Services (TSS) subscription</strong>. It allows authorized users to log in to your company data from anywhere in the world. Crucially, your data remains 100% secure on your main office computer; Remote Access simply provides a secure, encrypted portal to view and work on that data.</p>
                     
                     <h4>Top 3 Use Cases for Remote Access:</h4>
                     <ul>
@@ -815,22 +829,22 @@
       "@type": "LocalBusiness",
       "name": "Tirupati Tally Solutions",
       "image": "https://www.tirupatitally.netlify.app/assets/logo.png",
-      "@id": "",
+      "@id": "https://www.tirupatitally.netlify.app/",
       "url": "https://www.tirupatitally.netlify.app/",
       "telephone": "+91-94050-55551",
       "priceRange": "₹₹",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Your Street Address",
-        "addressLocality": "Pune",
-        "postalCode": "411001",
+        "streetAddress": "Office No-2, First Floor, M R Complex, Opposite to City Pride Multiplex",
+        "addressLocality": "Pune Satara Road, Pune",
+        "postalCode": "411037",
         "addressRegion": "MH",
         "addressCountry": "IN"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 18.5204,
-        "longitude": 73.8567
+        "latitude": 18.471610,
+        "longitude": 73.856180
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -843,14 +857,10 @@
           "Saturday"
         ],
         "opens": "10:00",
-        "closes": "18:00"
+        "closes": "19:30"
       },
-      "sameAs": [
-        "https://www.yourfacebook.com/",
-        "https://www.yourlinkedin.com/"
-      ] 
+      "sameAs": [] 
     }
     </script>
 </body>
 </html>
-
