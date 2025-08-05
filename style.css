@@ -1,3 +1,4 @@
+
 /* --- PREMIUM TALLY SERVICE STYLESHEET --- */
 
 /* 1. Global Setup, Fonts & Color Variables */
@@ -18,6 +19,10 @@
   --c-text-heading-dark: #f0f6fc;
   --c-text-body-dark: #adbac7;
   --c-border-dark: #30363d;
+  --z-index-overlay: 1098;
+  --z-index-nav: 1099;
+  --z-index-header: 1100;
+  --z-index-modal: 1101;
 }
 html.dark-mode {
   --c-bg: var(--c-bg-dark);
@@ -41,6 +46,9 @@ body {
   color: var(--c-text-body);
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+body.menu-open {
+    overflow: hidden;
 }
 .container {
   max-width: 1200px;
@@ -68,6 +76,9 @@ h3 > i {
   margin-right: 10px;
   color: var(--primary-blue);
 }
+#other-services .fa-brands.fa-aws {
+  color: #FF9900; /* AWS Orange */
+}
 h4.features-title {
   font-size: 1rem;
   color: var(--c-text-body);
@@ -85,6 +96,23 @@ section {
   margin: -40px auto 40px auto;
   color: var(--c-text-body);
 }
+
+/* Accessibility Focus Styles */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(26, 61, 125, 0.3);
+    border-radius: 4px;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+}
+.modal input:focus, .modal select:focus, .modal textarea:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(26, 61, 125, 0.2);
+}
+
+
 header {
   background-color: rgba(var(--c-bg-rgb), 0.85);
   backdrop-filter: blur(12px);
@@ -92,7 +120,7 @@ header {
   padding: 15px 0;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: var(--z-index-header);
   transition: background-color 0.3s ease;
 }
 header .container {
@@ -125,11 +153,12 @@ nav ul li a {
   padding: 5px 0;
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
+  border-radius: 2px;
 }
 nav ul li a:hover {
   color: var(--primary-blue);
 }
-nav ul li a.active {
+nav ul li a.active, nav ul li a[aria-current="page"] {
   color: var(--primary-blue);
   border-bottom-color: var(--primary-blue);
 }
@@ -189,7 +218,7 @@ html.dark-mode .icon-sun {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1098;
+  z-index: var(--z-index-overlay);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -219,7 +248,7 @@ html.dark-mode .icon-sun {
     transform: translateX(100%);
     transition: transform 0.3s ease;
     padding: 60px 20px 20px 20px;
-    z-index: 1099;
+    z-index: var(--z-index-nav);
   }
   nav#nav-menu.active {
     transform: translateX(0);
@@ -440,6 +469,7 @@ html.dark-mode .hero-text h1 {
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
+    opacity: 0.7;
 }
 .cta-button .fa-arrow-right {
   transition: transform 0.3s ease;
@@ -474,21 +504,34 @@ html.dark-mode .hero-text h1 {
     opacity: 0.8;
 }
 
+/* --- SECTION STYLES --- */
 #about, #why-us, #plans, #download, #other-services, #comparison {
   background-color: var(--c-bg-light);
 }
 #testimonials, #services, #blog {
   background-color: var(--c-bg);
 }
+
+/* --- SPECIAL BLUE SECTIONS --- */
+#live-support, #hiring {
+  background-color: var(--primary-blue);
+}
+#live-support h2, #live-support .section-subtitle, #hiring h2, #hiring p {
+  color: white;
+}
+#live-support h2 i {
+  color: white;
+}
+
 #download,
 #about {
   text-align: center;
 }
+#live-support .container {
+    text-align: center;
+}
 #other-services .plans-grid h3 {
   text-align: center;
-}
-#other-services .plans-grid h3 .fa-aws {
-    color: #FF9900;
 }
 .feature-grid,
 .service-grid {
@@ -702,45 +745,6 @@ html.dark-mode .plan-card:hover {
   gap: 30px;
 }
 
-/* --- LIVE SUPPORT SECTION --- */
-#live-support {
-    background-color: var(--primary-blue-darker);
-    color: white;
-    text-align: center;
-}
-#live-support h2 {
-    color: white;
-    margin-bottom: 20px;
-    font-size: 2.2rem;
-}
-#live-support h2 .fa-microsoft-teams {
-    font-size: 2.5rem;
-    margin-right: 15px;
-    vertical-align: middle;
-    color: #4B53BC;
-    background-color: white;
-    padding: 8px;
-    border-radius: 8px;
-}
-#live-support .section-subtitle {
-    color: var(--c-text-body-dark);
-    margin-top: -10px;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-#live-support .teams-btn {
-    background: white;
-    color: var(--primary-blue);
-    margin-top: 20px;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
-}
-#live-support .teams-btn:hover {
-    background: var(--c-bg-light);
-    color: var(--primary-blue-darker);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
-}
-
 /* INTERACTIVE RATING SECTION */
 .rate-us-section {
     text-align: center;
@@ -805,13 +809,7 @@ html.dark-mode .plan-card:hover {
   color: var(--primary-blue);
   margin-top: 15px;
 }
-#hiring {
-  background-color: var(--primary-blue);
-  color: white;
-}
-#hiring h2 {
-  color: white;
-}
+
 .hiring-content {
   display: flex;
   justify-content: space-between;
@@ -908,40 +906,29 @@ html.dark-mode .footer-bottom {
 }
 
 .whatsapp-fab {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    z-index: 998;
-    width: 60px;
-    height: 60px;
-    background-color: #25D366;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    animation: pulse-whatsapp 2s infinite;
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  background: #25d366;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
-
 .whatsapp-fab:hover {
-    transform: scale(1.1);
-    animation-play-state: paused;
-}
-
-@keyframes pulse-whatsapp {
-  0% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
+  transform: scale(1.1);
+  text-decoration: none;
+  color: white;
 }
 
 .chatbot-toggler {
@@ -1004,7 +991,7 @@ html.dark-mode .footer-bottom {
   bottom: 100px;
   right: 30px;
   transform-origin: bottom right;
-  z-index: 1000;
+  z-index: var(--z-index-modal);
   width: 370px;
   max-width: 90vw;
   height: 500px;
@@ -1016,14 +1003,14 @@ html.dark-mode .footer-bottom {
   overflow: hidden;
   transform: scale(0.5);
   opacity: 0;
-  pointer-events: none; /* Prevent clicks when hidden */
+  pointer-events: none;
   transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28),
     opacity 0.2s ease, background-color 0.3s ease;
 }
 .chatbot.active {
   transform: scale(1);
   opacity: 1;
-  pointer-events: auto; /* Allow clicks when active */
+  pointer-events: auto;
 }
 .chatbot-header {
   background: var(--primary-blue);
@@ -1124,13 +1111,19 @@ html.dark-mode .footer-bottom {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1001;
+  z-index: var(--z-index-modal);
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
   background-color: rgba(9, 30, 66, 0.6);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 .modal-content {
   background-color: var(--c-bg);
@@ -1141,11 +1134,16 @@ html.dark-mode .footer-bottom {
   max-width: 700px;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.4s ease-out;
+}
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 .modal-content.large {
     max-width: 900px;
 }
-#inquiry-modal .modal-content, #credflow-modal .modal-content, #aws-modal .modal-content, #query-modal .modal-content, #callback-modal .modal-content {
+#inquiry-modal .modal-content, #credflow-modal .modal-content, #query-modal .modal-content, #callback-modal .modal-content, #aws-modal .modal-content {
   max-width: 550px;
   text-align: center;
 }
@@ -1158,9 +1156,18 @@ html.dark-mode .footer-bottom {
   font-weight: 700;
   cursor: pointer;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
 }
 .close-button:hover {
   color: var(--c-text-heading);
+}
+.close-button:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+    border-radius: 50%;
 }
 #modal-title,
 #inquiry-modal-title {
@@ -1234,7 +1241,6 @@ html.dark-mode .footer-bottom {
   font-size: 0.9rem;
 }
 .modal-form-section label,
-#inquiry-form-container label,
 #query-form label,
 #callback-form label {
   display: block;
@@ -1243,14 +1249,11 @@ html.dark-mode .footer-bottom {
   color: var(--c-text-heading);
   text-align: left;
 }
-.modal-form-section .dynamic-field-container,
-#inquiry-form-container .dynamic-field-container {
+.modal-form-section .dynamic-field-container {
   display: none;
 }
 .modal-form-section input,
 .modal-form-section textarea,
-#inquiry-form-container input,
-#inquiry-form-container textarea,
 #query-form input,
 #query-form textarea,
 #callback-form input,
@@ -1280,25 +1283,11 @@ html.dark-mode .footer-bottom {
   margin-bottom: 20px;
 }
 .modal-form-section textarea,
-#inquiry-form-container textarea,
 #query-form textarea {
   resize: vertical;
   min-height: 80px;
 }
-.modal-form-section input:focus,
-.modal-form-section textarea:focus,
-#inquiry-form-container input:focus,
-#inquiry-form-container textarea:focus,
-#query-form input:focus,
-#query-form textarea:focus,
-#callback-form input:focus,
-#callback-form select:focus {
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(0, 82, 255, 0.2);
-  outline: none;
-}
 #success-message h2,
-#inquiry-success-message h2,
 #query-success-message h2,
 #callback-success-message h2 {
   color: #00875a;
@@ -1339,7 +1328,10 @@ html.dark-mode .footer-bottom {
     font-weight: 600;
 }
 .plan-selector input {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 .plan-selector label:has(input:checked) {
     background-color: var(--primary-blue);
@@ -1465,16 +1457,13 @@ html.dark-mode .footer-bottom {
     .blog-grid {
         grid-template-columns: 1fr 1fr;
     }
-     .plans-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    }
 }
 @media (max-width: 767px) {
   /* --- MOBILE PHONE STYLES --- */
   main {
       margin-bottom: 70px;
   }
-   header #callback-btn {
+   header #callback-btn, header #menu-toggle {
       display: none;
   }
   section {
@@ -1484,7 +1473,7 @@ html.dark-mode .footer-bottom {
       font-size: 2.2rem;
       margin-bottom: 40px;
   }
-  .service-grid, .plans-grid {
+  .plans-grid {
       grid-template-columns: 1fr;
       max-width: 400px;
       margin: 0 auto;
@@ -1508,14 +1497,6 @@ html.dark-mode .footer-bottom {
   .blog-grid {
     grid-template-columns: 1fr;
   }
-  .modal-layout {
-    flex-direction: column;
-  }
-  .modal-content {
-      padding: 25px;
-      max-height: 85vh;
-      overflow-y: auto;
-  }
   .mobile-nav {
     display: flex;
     position: fixed;
@@ -1524,7 +1505,7 @@ html.dark-mode .footer-bottom {
     right: 0;
     background-color: var(--c-bg);
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: var(--z-index-header);
     border-top: 1px solid var(--c-border);
   }
   html.dark-mode .mobile-nav {
@@ -1559,15 +1540,15 @@ html.dark-mode .footer-bottom {
       box-sizing: border-box;
   }
   .chatbot-toggler {
-      bottom: 85px;
-      right: 20px;
+    bottom: 85px;
   }
-   .whatsapp-fab {
-      bottom: 85px;
-      left: 20px;
+  .whatsapp-fab {
+     /* No longer stacked, so it can have its own position */
+    bottom: 85px;
+    left: 30px;
   }
   .chatbot {
-      bottom: 155px;
+      bottom: 155px; /* Above chatbot toggler on right */
   }
   .partner-logos img {
     max-height: 100px;
