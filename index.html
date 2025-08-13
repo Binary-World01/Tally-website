@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Security Meta Tags -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://api.web3forms.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://api.web3forms.com; frame-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://api.web3forms.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://api.web3forms.com https://lottie.host; frame-src 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="permissions-policy" content="geolocation=(), microphone=(), camera=()">
@@ -69,7 +69,7 @@
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="https://tallysolutions.com/download/" target="_blank" rel="noopener noreferrer" class="nav-link">Download</a></li>
                     <li><a href="#plans" class="nav-link">Plans</a></li>
-                     <li><a href="#blog" class="nav-link">Blog</a></li>
+                     <li><a href="#live-support" class="nav-link">Priority support desk</a></li>
                     <li><a href="#testimonials" class="nav-link">Clients</a></li>
                     <li><a href="https://help.tallysolutions.com/" target="_blank" rel="noopener noreferrer" class="nav-link">Help</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -82,7 +82,7 @@
                     <i class="fa-solid fa-moon icon-moon"></i>
                     <i class="fa-solid fa-sun icon-sun"></i>
                 </button>
-                
+                <button id="menu-toggle" class="menu-button" aria-label="Open Menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
     </header>
@@ -268,7 +268,7 @@
                     </div>
                     
                     <div class="plan-card fade-in">
-                        <h3>TallyPrime Server</h3>
+                        <h3 data-base-plan-name="TallyPrime Server">TallyPrime Server</h3>
                         <div class="price-container"><div class="price">₹ 2,70,000</div><span class="price-tag">+18% GST</span></div>
                         <h4 class="features-title">For enterprises:</h4>
                         <ul class="feature-list">
@@ -280,7 +280,7 @@
                     </div>
 
                     <div class="plan-card fade-in">
-                        <h3>Silver to Gold Upgrade</h3>
+                        <h3 data-base-plan-name="Silver to Gold Upgrade">Silver to Gold Upgrade</h3>
                         <div class="price-container"><div class="price">₹ 45,000</div><span class="price-tag">+18% GST</span></div>
                          <h4 class="features-title">License Upgrade Includes:</h4>
                         <ul class="feature-list">
@@ -473,14 +473,27 @@
                         <i class="fa-regular fa-star" data-value="4"></i>
                         <i class="fa-regular fa-star" data-value="5"></i>
                     </div>
-                    <form id="rating-form" class="rating-form">
-                        <input type="hidden" name="access_key" value="607d2511-5ed1-4ebf-b60b-7443cacc6a24">
-                        <input type="hidden" id="star-value" name="rating" value="">
-                        <input type="hidden" name="subject" value="New Website Rating Submission">
-                        <textarea name="comment" placeholder="Tell us more about your experience..." rows="3" required></textarea>
-                        <button type="submit" class="cta-button">Submit Feedback</button>
-                    </form>
-                     <p id="rating-success-message" style="display:none; color: #00875a; font-weight: bold;">Thank you for your feedback!</p>
+                    <div class="form-container">
+                        <form id="rating-form" class="rating-form">
+                            <input type="hidden" name="access_key" value="607d2511-5ed1-4ebf-b60b-7443cacc6a24">
+                            <input type="hidden" id="star-value" name="rating" value="">
+                            <input type="hidden" name="subject" value="New Website Rating Submission">
+                            <textarea name="comment" placeholder="Tell us more about your experience..." rows="3" required></textarea>
+                            <button type="submit" class="cta-button">Submit Feedback</button>
+                        </form>
+                    </div>
+                     <div class="form-result-container" style="display: none;">
+                        <div class="processing-animation" style="width: 150px; height: 150px; margin: 0 auto;">
+                           <lottie-player src="https://lottie.host/89163624-6031-4a81-9f17-0943186259e2/c3dZp02p3q.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                        </div>
+                        <div class="success-animation" style="display: none; width: 150px; height: 150px; margin: 0 auto;">
+                           <lottie-player src="https://lottie.host/eda39314-16a8-48ae-91f9-960a5d6255d3/j2Q4Cg66mw.json" background="transparent" speed="1" autoplay></lottie-player>
+                        </div>
+                        <div class="success-message-premium" style="display: none;">
+                           <h3 class="success-title">Thank You!</h3>
+                           <p class="success-subtitle">Your feedback has been submitted successfully.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -496,7 +509,6 @@
                 </div>
             </div>
         </section>
-
     </main>
     
     <footer id="contact">
@@ -512,7 +524,7 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#plans">Plans</a></li>
                     <li><a href="https://tallysolutions.com/product-roadmap/" target="_blank" rel="noopener noreferrer">Tally Roadmap</a></li>
-                    <li><a href="https://share.google/sxvtwlSeBCNKRLjYe" target="_blank" rel="noopener noreferrer">Our Tally Profile</a></li>
+                    <li><a href="https://share.google/sxvtwlSeBCNKRLjYe" target="_blank" rel="noopener noreferrer">Latest release notes</a></li>
                     <li><a href="#rate-us-section">Rate Us</a></li>
                     <li><a href="#" id="query-link">Contact for Query</a></li>
                 </ul>
@@ -529,10 +541,10 @@
     <a href="https://wa.me/919405055551?text=Hello!%20I'm%20visiting%20your%20website%20and%20have%20a%20question." target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <button class="chatbot-toggler" aria-label="Toggle chatbot"><i class="fa-solid fa-comment-dots"></i></button>
+    <button class="chatbot-toggler"><i class="fa-solid fa-comment-dots"></i></button>
 
-    <div class="chatbot" role="dialog" aria-modal="true" aria-labelledby="chatbot-header" aria-hidden="true">
-        <div class="chatbot-header" id="chatbot-header"><h3>Tally Helper</h3><button class="chatbot-close-btn" aria-label="Close chatbot">×</button></div>
+    <div class="chatbot" aria-hidden="true">
+        <div class="chatbot-header"><h3>Tally Helper</h3><button class="chatbot-close-btn" aria-label="Close Chatbot">×</button></div>
         <ul class="chat-window"><li class="chat-message bot">Hi there! How can I help you today?</li></ul>
         <div class="chatbot-input"></div>
     </div>
@@ -543,7 +555,7 @@
             <span>Plans</span>
         </a>
         <a href="https://tallysolutions.com/download/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">
-             <i class="fa-solid fa-download"></i>
+            <i class="fa-solid fa-download"></i>
             <span>Download</span>
         </a>
         <a href="https://help.tallysolutions.com/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">
@@ -558,10 +570,9 @@
     
     <!-- All Modals Below -->
     
-    <div id="payment-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div id="payment-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content">
             <button class="close-button" aria-label="Close">×</button>
-            <div id="success-message" style="display: none; text-align: center;"><h2>Thank You!</h2><p>Your details have been sent. We will verify your payment and contact you shortly.</p></div>
             <div id="modal-main-content">
                 <h2 id="modal-title">Complete Your Purchase</h2>
                 <div class="modal-layout">
@@ -576,16 +587,16 @@
                         <form id="payment-form">
                             <input type="hidden" name="access_key" value="607d2511-5ed1-4ebf-b60b-7443cacc6a24">
                             <input type="hidden" id="form-plan-name" name="plan">
-                            <input type="hidden" id="form-subject" name="subject" value="New Tally Order from Website - Pune">
+                            <input type="hidden" id="form-subject" name="subject">
                             
-                            <label for="fullNamePay">Full Name *</label><input type="text" id="fullNamePay" name="fullName" required>
-                            <label for="emailPay">Email Address *</label><input type="email" id="emailPay" name="email" required>
-                            <label for="mobilePay">Mobile Number *</label><input type="tel" id="mobilePay" name="mobile" required pattern="[0-9]{10}">
-                            <label for="gstNumber">GST Number *</label><input type="text" id="gstNumber" name="gstNumber" placeholder="Enter GST Number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}" title="Please enter a valid GST Number." required>
-                            <label for="billingAddress">Billing Address *</label><textarea id="billingAddress" name="billing_address" rows="3" required></textarea>
+                            <label for="fullName-payment">Full Name *</label><input type="text" id="fullName-payment" name="fullName" required>
+                            <label for="email-payment">Email Address *</label><input type="email" id="email-payment" name="email" required>
+                            <label for="mobile-payment">Mobile Number *</label><input type="tel" id="mobile-payment" name="mobile" pattern="[0-9]{10}" required>
+                            <label for="gstNumber-payment">Company GST Number *</label><input type="text" id="gstNumber-payment" name="gstNumber" placeholder="Enter GST Number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9,A-Z]{1}Z[0-9,A-Z]{1}" title="Please enter a valid GST Number." required>
+                            <label for="address-payment">Billing Address *</label><textarea id="address-payment" name="billing_address" rows="3" required></textarea>
                             
                             <div class="dynamic-field-container" id="gstin-container">
-                                <label for="gstin_number">GSTIN Number</label>
+                                <label for="gstin_number">GSTIN Number (for TSS)</label>
                                 <input type="text" name="gstin_number" id="gstin_number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}" title="Please enter a valid GSTIN Number.">
                             </div>
                             <div class="dynamic-field-container" id="auditor-container">
@@ -605,28 +616,40 @@
                     </div>
                 </div>
             </div>
+             <div class="form-result-container" style="display: none;">
+                <div class="processing-animation" style="width: 200px; height: 200px; margin: 0 auto;">
+                   <lottie-player src="https://lottie.host/89163624-6031-4a81-9f17-0943186259e2/c3dZp02p3q.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                </div>
+                <div class="success-animation" style="display: none; width: 200px; height: 200px; margin: 0 auto;">
+                   <lottie-player src="https://lottie.host/eda39314-16a8-48ae-91f9-960a5d6255d3/j2Q4Cg66mw.json" background="transparent" speed="1" autoplay></lottie-player>
+                </div>
+                <div class="success-message-premium" style="display: none;">
+                   <h3 class="success-title">Thank You!</h3>
+                   <p class="success-subtitle">Your details have been submitted. We will verify your payment and contact you shortly to complete the activation process.</p>
+                </div>
+            </div>
         </div>
     </div>
     
-    <div id="inquiry-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="inquiry-title" aria-hidden="true">
+    <div id="inquiry-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content">
             <button class="close-button" aria-label="Close">×</button>
             <div class="contact-modal-content">
-                <h2 id="inquiry-title">Web Development Inquiry</h2>
+                <h2>Web Development Inquiry</h2>
                 <p>To discuss your project requirements, please get in touch with our web development team directly.</p>
                 <div class="contact-info">
-                    <a href="tel:+919405055521" class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 94050 55521</span></a>
+                    <a href="tel:+917039194374" class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 94050 55521</span></a>
                     <a href="mailto:matrixmates123@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i><span>matrixmates123@gmail.com</span></a>
                 </div>
             </div>
         </div>
     </div>
     
-    <div id="credflow-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="credflow-title" aria-hidden="true">
+    <div id="credflow-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content">
             <button class="close-button" aria-label="Close">×</button>
             <div class="contact-modal-content">
-                <h2 id="credflow-title">Credflow Inquiry</h2>
+                <h2>Credflow Inquiry</h2>
                 <p>To inquire about Credflow automation and annual plans, please contact us directly.</p>
                 <div class="contact-info">
                     <a href="tel:+919405055551" class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 94050 55551</span></a>
@@ -636,11 +659,11 @@
         </div>
     </div>
     
-    <div id="aws-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="aws-title" aria-hidden="true">
+    <div id="aws-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content">
             <button class="close-button" aria-label="Close">×</button>
             <div class="contact-modal-content">
-                <h2 id="aws-title">Tally on AWS Inquiry</h2>
+                <h2>Tally on AWS Inquiry</h2>
                 <p>To discuss running Tally on the cloud for enhanced security and accessibility, please contact us directly.</p>
                 <div class="contact-info">
                     <a href="tel:+919405055551" class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 94050 55551</span></a>
@@ -650,11 +673,11 @@
         </div>
     </div>
     
-    <div id="query-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="query-title" aria-hidden="true">
+    <div id="query-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content">
             <button class="close-button" aria-label="Close">×</button>
             <div class="query-modal-content">
-                <h2 id="query-title" style="text-align: center;">Contact for Query</h2>
+                <h2 style="text-align: center;">Contact for Query</h2>
                 <p style="text-align: center; margin-bottom: 25px;">Please fill out the form below and we will get back to you as soon as possible.</p>
                 <form id="query-form" style="text-align: left;">
                      <input type="hidden" name="access_key" value="607d2511-5ed1-4ebf-b60b-7443cacc6a24">
@@ -677,22 +700,32 @@
                      
                      <button type="submit" class="cta-button" style="width: 100%; margin-top: 20px;">Submit Query</button>
                 </form>
-                <div id="query-success-message" style="display: none; text-align: center;">
-                    <h2>Thank You!</h2>
-                    <p>Your query has been submitted. We will contact you shortly.</p>
+                <div class="form-result-container" style="display: none;">
+                    <div class="processing-animation" style="width: 150px; height: 150px; margin: 0 auto;">
+                       <lottie-player src="https://lottie.host/89163624-6031-4a81-9f17-0943186259e2/c3dZp02p3q.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                    </div>
+                    <div class="success-animation" style="display: none; width: 150px; height: 150px; margin: 0 auto;">
+                       <lottie-player src="https://lottie.host/eda39314-16a8-48ae-91f9-960a5d6255d3/j2Q4Cg66mw.json" background="transparent" speed="1" autoplay></lottie-player>
+                    </div>
+                    <div class="success-message-premium" style="display: none;">
+                       <h3 class="success-title">Thank You!</h3>
+                       <p class="success-subtitle">Your query has been submitted. We will contact you shortly.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <div id="callback-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="callback-title" aria-hidden="true">
+    <div id="callback-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content">
             <button class="close-button" aria-label="Close">×</button>
             <div class="query-modal-content">
-                <h2 id="callback-title" style="text-align: center;">Request a Callback</h2>
+                <h2 style="text-align: center;">Request a Callback</h2>
                 <p style="text-align: center; margin-bottom: 25px;">Leave your details and we will call you back shortly.</p>
                 <form id="callback-form" style="text-align: left;">
-                     
+                     <input type="hidden" name="access_key" value="607d2511-5ed1-4ebf-b60b-7443cacc6a24">
+                     <input type="hidden" name="subject" value="">
+
                      <label for="callback-name">Name *</label>
                      <input type="text" id="callback-name" name="name" required>
                                           
@@ -711,15 +744,23 @@
                      
                      <button type="submit" class="cta-button" style="width: 100%; margin-top: 20px;">Request Call via WhatsApp</button>
                 </form>
-                <div id="callback-success-message" style="display: none; text-align: center;">
-                    <h2>Redirecting...</h2>
-                    <p>We are redirecting you to WhatsApp to send your callback request. Please tap 'Send' in the chat.</p>
+                 <div class="form-result-container" style="display: none;">
+                    <div class="processing-animation" style="width: 150px; height: 150px; margin: 0 auto;">
+                       <lottie-player src="https://lottie.host/89163624-6031-4a81-9f17-0943186259e2/c3dZp02p3q.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                    </div>
+                    <div class="success-animation" style="display: none; width: 150px; height: 150px; margin: 0 auto;">
+                       <lottie-player src="https://lottie.host/eda39314-16a8-48ae-91f9-960a5d6255d3/j2Q4Cg66mw.json" background="transparent" speed="1" autoplay></lottie-player>
+                    </div>
+                    <div class="success-message-premium" style="display: none;">
+                       <h3 class="success-title">Redirecting...</h3>
+                       <p class="success-subtitle">We've received your request! We are now redirecting you to WhatsApp to send your callback request. Please tap 'Send' in the chat.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <div id="comparison-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="comparison-title" aria-hidden="true">
+    <div id="comparison-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content large">
              <button class="close-button" aria-label="Close">×</button>
              <h2 id="comparison-title">Plan Comparison</h2>
@@ -733,14 +774,14 @@
     </div>
 
     <!-- Blog Post Modals -->
-    <div id="blog-modal-1" class="modal" role="dialog" aria-modal="true" aria-labelledby="blog-title-1" aria-hidden="true">
+    <div id="blog-modal-1" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content large">
             <button class="close-button" aria-label="Close">×</button>
             <article class="blog-post-full">
                 <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Comparing Tally Prime Silver and Gold Licenses">
                 <div class="blog-content">
                     <span class="blog-category">Buying Guide</span>
-                    <h2 id="blog-title-1">Tally Prime Silver vs. Gold: The 2025 Pune Business Guide</h2>
+                    <h2>Tally Prime Silver vs. Gold: The 2025 Pune Business Guide</h2>
                     <p>As you plan your business strategy for 2025, choosing the right accounting software is a critical investment. For businesses in Pune, TallyPrime is the undisputed leader, but the choice between a Silver and Gold license often causes confusion. Let's clarify this so you can make the best decision for the upcoming financial year.</p>
                     
                     <h3>TallyPrime Silver: The Powerhouse for the Single User</h3>
@@ -769,14 +810,14 @@
         </div>
     </div>
     
-    <div id="blog-modal-2" class="modal" role="dialog" aria-modal="true" aria-labelledby="blog-title-2" aria-hidden="true">
+    <div id="blog-modal-2" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content large">
             <button class="close-button" aria-label="Close">×</button>
              <article class="blog-post-full">
                 <img src="https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Tally customization report on a screen">
                 <div class="blog-content">
                     <span class="blog-category">Expert Tips</span>
-                    <h2 id="blog-title-2">5 Must-Have Tally Customizations for Growing Businesses</h2>
+                    <h2>5 Must-Have Tally Customizations for Growing Businesses</h2>
                     <p>TallyPrime is incredibly powerful right out of the box, but its true strength lies in its ability to be customized to fit your exact business processes. As your business grows, these small tweaks can lead to huge gains in efficiency. Here are five high-impact Tally customizations we recommend for every scaling business.</p>
                     
                     <ol>
@@ -792,14 +833,14 @@
         </div>
     </div>
 
-    <div id="blog-modal-3" class="modal" role="dialog" aria-modal="true" aria-labelledby="blog-title-3" aria-hidden="true">
+    <div id="blog-modal-3" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-content large">
             <button class="close-button" aria-label="Close">×</button>
             <article class="blog-post-full">
                  <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Person using Tally on a laptop remotely">
                 <div class="blog-content">
                     <span class="blog-category">Feature Deep Dive</span>
-                    <h2 id="blog-title-3">Unlocking Remote Work: A Guide to Tally's Remote Access</h2>
+                    <h2>Unlocking Remote Work: A Guide to Tally's Remote Access</h2>
                     <p>The modern business landscape demands flexibility. Whether you are a business owner traveling, a sales team on the field, or offering work-from-home options, having access to your company's financial data is essential. Tally's Remote Access feature is the secure key to unlocking this capability.</p>
 
                     <h4>What is Tally Remote Access and Why Do I Need TSS?</h4>
@@ -820,7 +861,8 @@
         </div>
     </div>
     
-    <script defer src="script.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="script.js"></script>
     
     <!-- LocalBusiness Schema for SEO -->
     <script type="application/ld+json">
@@ -835,16 +877,16 @@
       "priceRange": "₹₹",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Office No-2, First Floor, M R Complex, Opposite to City Pride Multiplex",
-        "addressLocality": "Pune Satara Road, Pune",
-        "postalCode": "411037",
+        "streetAddress": "Office No. 412, Sohrab Hall, Sangamwadi",
+        "addressLocality": "Pune",
+        "postalCode": "411001",
         "addressRegion": "MH",
         "addressCountry": "IN"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 18.471610,
-        "longitude": 73.856180
+        "latitude": 18.5364,
+        "longitude": 73.8747
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -859,7 +901,10 @@
         "opens": "10:00",
         "closes": "19:30"
       },
-      "sameAs": [] 
+      "sameAs": [
+        "https://www.facebook.com/TirupatiTallySolutions/",
+        "https://www.linkedin.com/company/tirupati-tally-solutions/"
+      ] 
     }
     </script>
 </body>
